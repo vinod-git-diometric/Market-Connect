@@ -215,7 +215,7 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
         </h1>
         <div className="w-16 h-px bg-primary mx-auto my-4" />
         <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-          Real food. Real neighbors. Every Saturday morning.
+          Real food. Real neighbors. Every Thursday afternoon.
         </p>
         {nextMarketDate && (
           <p className="text-sm font-sans font-medium text-foreground mt-1">
