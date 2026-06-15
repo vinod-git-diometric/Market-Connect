@@ -1,0 +1,411 @@
+United Main Farmers Market Vendor Onboarding
+
+Purpose
+
+This document defines the Phase 1 vendor onboarding workflow for the United Main Stoneham Farmers Market pilot.
+
+The purpose of onboarding is not to create a full vendor commerce account. The purpose is to create accurate, shopper-friendly vendor profiles and enable lightweight reservation for pickup where appropriate.
+
+Operating Principle
+
+Do not ask vendors to start from a blank form.
+
+Start by creating a draft profile from available information. Then ask the vendor to confirm, correct, and complete only the missing pieces.
+
+This keeps momentum high and reduces vendor workload.
+
+Pilot Goal
+
+The pilot should help shoppers answer three questions:
+
+1. Who is coming to the market?
+2. What are they bringing?
+3. Can I reserve anything before I arrive?
+
+Vendor Launch Modes
+
+Each vendor should be assigned one of the following launch modes.
+
+Launch Mode	Description	Use When
+profile_only	Vendor page exists, but products are not confirmed.	Vendor has limited information or has not submitted product details.
+featured_products	Vendor page includes confirmed featured products.	Vendor submitted product names, descriptions, and photos, but does not want reservations.
+reserve_for_pickup	Vendor page includes reservable products.	Vendor confirmed products, prices, pickup expectations, and reservation eligibility.
+
+Vendor Onboarding Statuses
+
+Use these statuses in the operating sheet and database.
+
+Status	Meaning
+public_info_drafted	United Main created a first draft using available information.
+vendor_review_needed	Draft was sent to the vendor for review.
+profile_approved	Vendor approved basic profile information.
+products_needed	Product details are still missing.
+products_received	Vendor submitted product details.
+reservation_ready	Vendor has confirmed at least one reservable product.
+live	Vendor is visible on the public market page.
+paused	Vendor should not appear publicly for now.
+
+Current Vendors
+
+The current Stoneham Farmers Market pilot includes these vendors.
+
+Vendor	Current Readiness	Recommended Initial Launch Mode
+Del Sur Empanadas	Strong candidate, phone missing.	reserve_for_pickup after product confirmation
+Wilmington Honey Bee	Good contact completeness.	reserve_for_pickup after product confirmation
+Crave Creations	Reachable, website missing.	featured_products or reserve_for_pickup after confirmation
+Spice Weasel Sauce	Contact name and phone missing.	reserve_for_pickup after product confirmation
+Bellini Baking Co.	Most complete profile.	reserve_for_pickup after product confirmation
+Riverdale Farm	Email and website missing.	profile_only first
+Teresa’s Farm	Good contact completeness.	featured_products first
+Aaronap Cellars	Good contact completeness, but wine may require additional operational care.	profile_only or featured_products first
+
+Required Vendor Fields
+
+These fields are required to create a usable vendor profile.
+
+Field	Required for Profile	Required for Reservation
+Business name	Yes	Yes
+Contact name	Preferred	Yes
+Email	Preferred	Yes
+Phone	Preferred	Preferred
+Website or social link	Preferred	Preferred
+Short business description	Yes	Yes
+Logo or profile image	Preferred	Preferred
+Market dates attending	Preferred	Yes
+Pickup instructions	No	Yes
+
+Required Product Fields
+
+These fields are required for featured products and reservations.
+
+Field	Required for Featured Product	Required for Reservation
+Product name	Yes	Yes
+Product description	Preferred	Yes
+Product photo	Preferred	Preferred
+Price	Preferred	Yes
+Quantity available	No	Preferred
+Max quantity per reservation	No	Preferred
+Pickup notes	No	Yes
+Allergen or storage notes	If relevant	If relevant
+Reservation allowed	No	Yes
+
+Onboarding Workflow
+
+Step 1: Create Draft Vendor Profile
+
+Use available sheet data, website links, and social handles to create a draft profile shell.
+
+Do not invent unverified product details.
+
+A draft profile may include:
+
+* Business name
+* Contact name
+* Website
+* Email
+* Phone
+* Facebook link
+* Instagram link
+* Location
+* Placeholder description
+* Placeholder product section
+* Reservation status
+
+Example placeholder copy:
+
+This vendor profile is being prepared for the Stoneham Farmers Market pilot. Product details are being confirmed with the vendor.
+
+Step 2: Assign Initial Launch Mode
+
+Assign the vendor one of:
+
+* profile_only
+* featured_products
+* reserve_for_pickup
+
+Default to profile_only if product data is missing.
+
+Only use reserve_for_pickup after the vendor explicitly confirms reservation eligibility.
+
+Step 3: Send Vendor Review Email
+
+Send each vendor an individual email with their draft profile details.
+
+Do not send one generic mass email.
+
+The email should ask the vendor to:
+
+1. Confirm or correct profile information.
+2. Send a short business description.
+3. Send 3 to 5 featured products.
+4. Confirm whether reservations are allowed.
+5. Confirm pickup instructions.
+
+Vendor Review Email Template
+
+Subject:
+
+Your United Main vendor preview is started
+
+Body:
+
+Hi [Vendor Name],
+We started your draft United Main vendor profile for the Stoneham Farmers Market pilot using the information currently available.
+Before we show this to shoppers, can you review the draft below and send back any corrections?
+[Insert draft profile]
+The main missing piece is your product information. Please send 3 to 5 products you would like featured.
+For each product, please include:
+- Product name
+- Price
+- Short description
+- Photo
+- Whether shoppers can reserve it for pickup
+- Any important notes, such as allergens, storage, limited quantity, or pickup instructions
+This first version is intentionally lightweight. The goal is to help shoppers see who is coming, what you are bringing, and, where possible, reserve selected items before market day.
+Thanks,
+Vinod
+
+Step 4: Process Vendor Response
+
+When the vendor responds:
+
+1. Update vendor profile fields.
+2. Set status to profile_approved if profile details are confirmed.
+3. Add product records.
+4. Set product status to confirmed or vendor_review_needed.
+5. Confirm reservation eligibility.
+6. Add pickup notes.
+7. Set launch mode.
+8. Move vendor toward live.
+
+Step 5: Enable Reservations Selectively
+
+Do not enable reservation for all vendors by default.
+
+A product can be reservation-enabled only when the vendor confirms:
+
+* Product name
+* Product price
+* Pickup rules
+* Whether quantity is limited
+* Whether shopper should pay at pickup
+* Any important preparation or storage notes
+
+Reservation button copy should be:
+
+Reserve for pickup
+
+Do not use:
+
+Buy now
+Add to cart
+Checkout
+Order online
+
+Phase 1 reservations are not payments.
+
+Step 6: Publish Vendor
+
+A vendor can go live when:
+
+1. Business name is confirmed.
+2. Vendor status is ready enough for public display.
+3. Launch mode is assigned.
+4. Public page does not contain unverified product claims.
+5. Incomplete sections have graceful placeholder copy.
+
+Public Profile Standards
+
+Each vendor profile should include:
+
+* Business name
+* Short description
+* Location
+* Website and social links where available
+* Featured products where confirmed
+* Reservation call-to-action only where confirmed
+* Human copy that makes the vendor feel distinct
+
+Each vendor profile should answer:
+
+Why should a shopper stop by this booth?
+
+Product Display Standards
+
+Each product card should include:
+
+* Product name
+* Vendor name where needed
+* Price or price display
+* Short description
+* Product image if available
+* Pickup note if reservable
+* Reservation CTA only if allowed
+
+If product details are not ready, show:
+
+Products coming soon.
+
+or:
+
+This vendor is still stocking their digital table.
+
+Do not show fake product placeholders that look final.
+
+Shopper Reservation Flow
+
+When a shopper reserves a product:
+
+1. Show product and vendor details.
+2. Ask for shopper name.
+3. Ask for shopper email.
+4. Ask for shopper phone.
+5. Ask for quantity.
+6. Allow optional note.
+7. Confirm that payment happens at pickup unless vendor specifies otherwise.
+8. Save reservation.
+9. Send confirmation email.
+10. Notify vendor.
+11. Notify Vinod.
+
+Shopper Confirmation Copy
+
+Use this general message after reservation submission:
+
+Reserved. We sent a confirmation to your email.
+Please pick up your item at the vendor booth during market hours. Payment happens directly with the vendor unless otherwise noted.
+
+Do not imply guaranteed fulfillment unless the vendor has explicitly confirmed the process.
+
+Vendor Notification Email
+
+Subject:
+
+New United Main pickup reservation
+
+Body:
+
+Hi [Vendor Name],
+A shopper reserved an item for pickup at the Stoneham Farmers Market.
+Reservation details:
+Product: [Product Name]
+Quantity: [Quantity]
+Shopper: [Shopper Name]
+Email: [Shopper Email]
+Phone: [Shopper Phone]
+Note: [Shopper Note]
+Reservation code: [Reservation Code]
+Please hold this item for pickup during market hours if available according to your confirmed reservation process.
+Thanks,
+United Main
+
+Admin Notification Email
+
+Subject:
+
+New reservation: [Vendor Name] - [Product Name]
+
+Body:
+
+New United Main reservation submitted.
+Vendor: [Vendor Name]
+Product: [Product Name]
+Quantity: [Quantity]
+Shopper: [Shopper Name]
+Email: [Shopper Email]
+Phone: [Shopper Phone]
+Market Date: [Market Date]
+Reservation Code: [Reservation Code]
+
+Data Quality Rules
+
+Do not mark a vendor as live unless the public profile is accurate enough to show shoppers.
+
+Do not mark a product as live unless:
+
+* Product name is confirmed.
+* Product belongs to the correct vendor.
+* Description is either vendor-provided or clearly generic.
+* Price is confirmed or deliberately shown as Ask at booth.
+* Reservation eligibility is confirmed.
+
+Do not enable reservation unless:
+
+* Vendor has explicitly approved reservation.
+* Pickup expectation is clear.
+* Product price or payment expectation is clear.
+
+Recommended First Priority Vendors
+
+Start with vendors most likely to produce clean, discrete products.
+
+Recommended first outreach order:
+
+1. Bellini Baking Co.
+2. Wilmington Honey Bee
+3. Del Sur Empanadas
+4. Spice Weasel Sauce
+5. Crave Creations
+6. Teresa’s Farm
+7. Riverdale Farm
+8. Aaronap Cellars
+
+Reasoning:
+
+* Baked goods, honey, empanadas, and sauces are easier to list as discrete products.
+* Farms may have more variable inventory.
+* Wine may require additional care around reservation language and market rules.
+
+What Not To Build
+
+Do not build:
+
+* Vendor login
+* Vendor dashboard
+* Product upload portal
+* Payment workflow
+* Cart
+* Checkout
+* Shopper accounts
+* Inventory management
+* Reviews
+* Vendor analytics
+* Promotion engine
+* Loyalty
+* Subscription reminders
+
+The operator can manage Phase 1 manually.
+
+Codex Implementation Notes
+
+Codex should build interfaces that support the onboarding workflow, not replace the workflow.
+
+The app should support:
+
+1. Draft vendor records.
+2. Incomplete vendor profiles.
+3. Featured products.
+4. Reservable products.
+5. Graceful public states for missing information.
+6. Email notifications.
+7. Internal statuses.
+
+Codex should not assume every vendor has complete data.
+
+Codex should not require every vendor to have products before appearing on the public market page.
+
+Codex should not create fake product data that looks real.
+
+Acceptance Criteria
+
+Vendor onboarding is working when:
+
+1. A draft vendor can be created from partial information.
+2. A vendor can appear publicly in profile_only mode.
+3. A vendor can show products in featured_products mode.
+4. A vendor can accept reservation requests in reserve_for_pickup mode.
+5. Products without reservation enabled do not show reservation CTAs.
+6. Reservation-enabled products save shopper requests.
+7. Shopper, vendor, and admin emails are sent.
+8. Incomplete vendors do not make the page look broken.
+9. The public experience feels local, useful, and human.
