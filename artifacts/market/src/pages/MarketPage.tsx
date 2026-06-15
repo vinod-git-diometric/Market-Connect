@@ -253,7 +253,7 @@ function WeekHighlightsSection({ vendors }: { vendors: Vendor[] }) {
                 key={v.id}
                 href={`/vendors/${v.id}`}
                 data-testid={`vendor-chip-link-${v.id}`}
-                className="text-xs font-sans border border-border rounded-[4px] px-3 py-1 text-foreground hover:border-primary hover:text-primary transition-colors"
+                className="cursor-pointer text-xs font-sans border border-primary/40 rounded-[4px] px-3 py-1 text-primary underline-offset-2 hover:underline hover:border-primary transition-colors"
               >
                 {v.name}
               </Link>
