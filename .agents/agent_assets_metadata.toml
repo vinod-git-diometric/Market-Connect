@@ -1,0 +1,50 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "qOCzAIIFkKR9dDqAK0XDW"
+uri = "file://artifacts/market/src/assets/vendor-bellini.png"
+type = "image"
+title = "artisan sourdough loaves"
+
+[[generated]]
+id = "0auKnwt-r7YtzVzsMzbtm"
+uri = "file://artifacts/market/src/assets/vendor-delsur.png"
+type = "image"
+title = "golden empanadas"
+
+[[generated]]
+id = "o4aYUbN2V3tJfT_YOFAEH"
+uri = "file://artifacts/market/src/assets/vendor-honeybee.png"
+type = "image"
+title = "amber honey jars"
+
+[[generated]]
+id = "7nDrx4xpmgiMTTuX5qWAF"
+uri = "file://artifacts/market/src/assets/vendor-crave.png"
+type = "image"
+title = "handmade chocolates"
+
+[[generated]]
+id = "YGWY0OsFjgLc3SXE4qMpa"
+uri = "file://artifacts/market/src/assets/vendor-spiceweasel.png"
+type = "image"
+title = "small-batch hot sauce"
+
+[[generated]]
+id = "xSFNYB2s24gvLAp8T89Jr"
+uri = "file://artifacts/market/src/assets/vendor-riverdale.png"
+type = "image"
+title = "fresh seasonal vegetables"
+
+[[generated]]
+id = "gPxPkdWzgLbzpC7ahWGLX"
+uri = "file://artifacts/market/src/assets/vendor-teresa.png"
+type = "image"
+title = "colorful flower bouquets"
+
+[[generated]]
+id = "PEEVOtZFtYxk5MXGXfCBC"
+uri = "file://artifacts/market/src/assets/vendor-aaronap.png"
+type = "image"
+title = "local wine bottles"

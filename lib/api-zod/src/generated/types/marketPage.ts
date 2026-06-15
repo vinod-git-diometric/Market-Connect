@@ -5,7 +5,9 @@
  * United Main Farmers Market API
  * OpenAPI spec version: 0.1.0
  */
+import type { Vendor } from './vendor';
 
-export interface HealthStatus {
-  status: string;
+export interface MarketPage {
+  nextMarketDate: string;
+  vendors: Vendor[];
 }
