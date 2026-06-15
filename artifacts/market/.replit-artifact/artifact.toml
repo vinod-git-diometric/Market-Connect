@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "United Main Farmers Market"
+version = "1.0.0"
+id = "artifacts/market"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23337
+
+[services.development]
+run = "pnpm --filter @workspace/market run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/market", "run", "build" ]
+publicDir = "artifacts/market/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23337"
+BASE_PATH = "/"

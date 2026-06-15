@@ -3,13 +3,21 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: United Main Farmers Market API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: market
+    description: Market page data
+  - name: vendors
+    description: Vendor operations
+  - name: reservations
+    description: Reservation operations
+  - name: admin
+    description: Admin operations
 paths:
   /healthz:
     get:
@@ -24,6 +32,123 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /market:
+    get:
+      operationId: getMarketPage
+      tags: [market]
+      summary: Get full market page data
+      description: Returns all data needed to render the public market page — next market date, vendors, and their products
+      responses:
+        "200":
+          description: Market page data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MarketPage"
+
+  /vendors:
+    get:
+      operationId: listVendors
+      tags: [vendors]
+      summary: List all live vendors
+      description: Returns all vendors with status=live
+      responses:
+        "200":
+          description: List of vendors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Vendor"
+
+  /vendors/{id}:
+    get:
+      operationId: getVendor
+      tags: [vendors]
+      summary: Get a single vendor
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Vendor detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VendorDetail"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /reservations:
+    post:
+      operationId: createReservation
+      tags: [reservations]
+      summary: Create a reservation for pickup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReservationInput"
+      responses:
+        "201":
+          description: Reservation created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Reservation"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /admin/reservations:
+    get:
+      operationId: listAdminReservations
+      tags: [admin]
+      summary: List all reservations (admin)
+      responses:
+        "200":
+          description: All reservations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReservationDetail"
+
+  /admin/vendors:
+    get:
+      operationId: listAdminVendors
+      tags: [admin]
+      summary: List all vendors with internal status (admin)
+      responses:
+        "200":
+          description: All vendors including draft/paused
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/VendorAdmin"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +159,266 @@ components:
       required:
         - status
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        vendorId:
+          type: integer
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        price:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+        reservationAllowed:
+          type: boolean
+        pickupNote:
+          type: ["string", "null"]
+        allergenNote:
+          type: ["string", "null"]
+        quantityAvailable:
+          type: ["integer", "null"]
+        maxPerReservation:
+          type: ["integer", "null"]
+        status:
+          type: string
+      required:
+        - id
+        - vendorId
+        - name
+        - reservationAllowed
+        - status
+
+    Vendor:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        location:
+          type: ["string", "null"]
+        website:
+          type: ["string", "null"]
+        instagram:
+          type: ["string", "null"]
+        facebook:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+        launchMode:
+          type: string
+          enum: [profile_only, featured_products, reserve_for_pickup]
+        status:
+          type: string
+        marketDates:
+          type: ["string", "null"]
+        pickupInstructions:
+          type: ["string", "null"]
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+      required:
+        - id
+        - name
+        - launchMode
+        - status
+        - products
+
+    VendorDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        location:
+          type: ["string", "null"]
+        website:
+          type: ["string", "null"]
+        instagram:
+          type: ["string", "null"]
+        facebook:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+        launchMode:
+          type: string
+          enum: [profile_only, featured_products, reserve_for_pickup]
+        status:
+          type: string
+        marketDates:
+          type: ["string", "null"]
+        pickupInstructions:
+          type: ["string", "null"]
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+      required:
+        - id
+        - name
+        - launchMode
+        - status
+        - products
+
+    MarketPage:
+      type: object
+      properties:
+        nextMarketDate:
+          type: string
+        vendors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Vendor"
+      required:
+        - nextMarketDate
+        - vendors
+
+    ReservationInput:
+      type: object
+      properties:
+        productId:
+          type: integer
+        shopperName:
+          type: string
+        shopperEmail:
+          type: string
+        shopperPhone:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+        note:
+          type: ["string", "null"]
+      required:
+        - productId
+        - shopperName
+        - shopperEmail
+        - shopperPhone
+        - quantity
+
+    Reservation:
+      type: object
+      properties:
+        id:
+          type: integer
+        reservationCode:
+          type: string
+        productId:
+          type: integer
+        vendorId:
+          type: integer
+        shopperName:
+          type: string
+        shopperEmail:
+          type: string
+        shopperPhone:
+          type: string
+        quantity:
+          type: integer
+        note:
+          type: ["string", "null"]
+        marketDate:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+      required:
+        - id
+        - reservationCode
+        - productId
+        - vendorId
+        - shopperName
+        - shopperEmail
+        - shopperPhone
+        - quantity
+        - createdAt
+
+    ReservationDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+        reservationCode:
+          type: string
+        productId:
+          type: integer
+        vendorId:
+          type: integer
+        vendorName:
+          type: string
+        productName:
+          type: string
+        shopperName:
+          type: string
+        shopperEmail:
+          type: string
+        shopperPhone:
+          type: string
+        quantity:
+          type: integer
+        note:
+          type: ["string", "null"]
+        marketDate:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+      required:
+        - id
+        - reservationCode
+        - productId
+        - vendorId
+        - vendorName
+        - productName
+        - shopperName
+        - shopperEmail
+        - shopperPhone
+        - quantity
+        - createdAt
+
+    VendorAdmin:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        contactName:
+          type: ["string", "null"]
+        email:
+          type: ["string", "null"]
+        phone:
+          type: ["string", "null"]
+        launchMode:
+          type: string
+          enum: [profile_only, featured_products, reserve_for_pickup]
+        status:
+          type: string
+        productCount:
+          type: integer
+        reservableProductCount:
+          type: integer
+      required:
+        - id
+        - name
+        - launchMode
+        - status
+        - productCount
+        - reservableProductCount
