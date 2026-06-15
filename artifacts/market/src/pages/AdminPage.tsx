@@ -81,7 +81,7 @@ function ReservationsTab() {
       <table className="w-full text-xs font-sans border-collapse">
         <thead>
           <tr className="border-b border-border text-left">
-            {["Code", "Date", "Vendor", "Product", "Qty", "Shopper", "Email", "Phone", "Note"].map((h) => (
+            {["Code", "Market Date", "Reserved On", "Vendor", "Product", "Qty", "Shopper", "Email", "Phone", "Note"].map((h) => (
               <th key={h} className="py-2 px-2 text-[10px] uppercase tracking-widest text-muted-foreground font-medium whitespace-nowrap">
                 {h}
               </th>
@@ -96,6 +96,7 @@ function ReservationsTab() {
               className="border-b border-border/50 hover:bg-muted/30 transition-colors"
             >
               <td className="py-2 px-2 font-mono text-[11px] text-primary whitespace-nowrap">{r.reservationCode}</td>
+              <td className="py-2 px-2 whitespace-nowrap">{r.marketDate || "—"}</td>
               <td className="py-2 px-2 text-muted-foreground whitespace-nowrap">
                 {r.createdAt ? new Date(r.createdAt).toLocaleDateString() : "—"}
               </td>

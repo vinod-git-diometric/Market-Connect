@@ -32,8 +32,16 @@ router.post("/reservations", async (req, res): Promise<void> => {
       .limit(1);
 
     if (!product) { res.status(404).json({ error: "Product not found" }); return; }
+    if (product.status !== "live") {
+      res.status(400).json({ error: "This product is not currently available" });
+      return;
+    }
     if (!product.reservationAllowed) {
       res.status(400).json({ error: "This product does not accept reservations" });
+      return;
+    }
+    if (product.maxPerReservation !== null && quantity > product.maxPerReservation) {
+      res.status(400).json({ error: `Maximum ${product.maxPerReservation} per reservation` });
       return;
     }
 
@@ -44,6 +52,10 @@ router.post("/reservations", async (req, res): Promise<void> => {
       .limit(1);
 
     if (!vendor) { res.status(404).json({ error: "Vendor not found" }); return; }
+    if (vendor.status !== "live") {
+      res.status(400).json({ error: "This vendor is not currently active" });
+      return;
+    }
 
     const reservationCode = generateReservationCode();
     const marketDate = vendor.marketDates || null;
