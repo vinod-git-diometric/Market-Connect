@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 import { useGetMarketPage } from "@workspace/api-client-react";
 import type { Vendor, Product } from "@workspace/api-client-react";
@@ -155,7 +156,14 @@ function VendorSection({
             </p>
           )}
 
-          <div className="flex gap-4 mt-5">
+          <div className="flex flex-wrap items-center gap-4 mt-5">
+            <Link
+              href={`/vendors/${vendor.id}`}
+              data-testid={`vendor-page-link-${vendor.id}`}
+              className="text-[11px] font-sans font-medium uppercase tracking-widest text-foreground border border-border rounded-[4px] px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
+            >
+              View full page
+            </Link>
             {vendor.website && (
               <a
                 href={vendor.website}
