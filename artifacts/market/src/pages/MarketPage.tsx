@@ -249,13 +249,14 @@ function WeekHighlightsSection({ vendors }: { vendors: Vendor[] }) {
           </p>
           <div className="flex flex-wrap gap-2">
             {featuredVendors.map((v) => (
-              <a
+              <Link
                 key={v.id}
-                href={`#vendor-${v.id}`}
+                href={`/vendors/${v.id}`}
+                data-testid={`vendor-chip-link-${v.id}`}
                 className="text-xs font-sans border border-border rounded-[4px] px-3 py-1 text-foreground hover:border-primary hover:text-primary transition-colors"
               >
                 {v.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
