@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useGetVendor, getGetVendorQueryKey } from "@workspace/api-client-react";
 import type { Product } from "@workspace/api-client-react";
 import ReservationDrawer from "@/components/ReservationDrawer";
+import UnitedMainHeader from "@/components/UnitedMainHeader";
 
 import belliniImg from "@/assets/vendor-bellini.png";
 import delsurImg from "@/assets/vendor-delsur.png";
@@ -84,8 +85,9 @@ export default function VendorPage() {
 
   return (
     <div className="min-h-screen bg-background" data-testid={`vendor-page-${vendor.id}`}>
+      <UnitedMainHeader />
       {/* Back nav */}
-      <nav className="px-5 pt-5 pb-2 max-w-2xl mx-auto">
+      <nav className="px-5 pt-4 pb-2 max-w-2xl mx-auto">
         <Link
           href="/market"
           data-testid="back-to-market"

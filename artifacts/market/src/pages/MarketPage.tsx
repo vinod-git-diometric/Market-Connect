@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useGetMarketPage } from "@workspace/api-client-react";
 import type { Vendor, Product } from "@workspace/api-client-react";
 import ReservationDrawer from "@/components/ReservationDrawer";
+import UnitedMainHeader from "@/components/UnitedMainHeader";
 
 import heroImg from "@/assets/hero-market-real.jpg";
 import belliniImg from "@/assets/vendor-bellini.png";
@@ -369,14 +370,7 @@ export default function MarketPage() {
 
   return (
     <div className="min-h-screen bg-background" data-testid="market-page">
-      <nav className="flex items-center px-5 py-3 border-b border-border/40">
-        <a
-          href="https://unitedmain.com"
-          className="text-xs tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors"
-        >
-          ← Return to United Main
-        </a>
-      </nav>
+      <UnitedMainHeader />
       <HeroSection nextMarketDate={data.nextMarketDate} />
       <WeekHighlightsSection vendors={data.vendors} />
 
