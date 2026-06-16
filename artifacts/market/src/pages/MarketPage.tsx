@@ -7,7 +7,7 @@ import ReservationDrawer from "@/components/ReservationDrawer";
 import UnitedMainHeader from "@/components/UnitedMainHeader";
 
 import heroImg from "@/assets/hero-market-real.jpg";
-import belliniImg from "@/assets/vendor-bellini.png";
+import belliniImg from "@/assets/bellini-logo.png";
 import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
 import craveImg from "@/assets/crave-logo.jpeg";
@@ -77,7 +77,7 @@ function ProductCard({
   onReserve: (product: Product) => void;
 }) {
   const showReserve = launchMode === "reserve_for_pickup" && product.reservationAllowed;
-  const image = productImages[product.id];
+  const image = product.imageUrl || productImages[product.id];
 
   return (
     <div

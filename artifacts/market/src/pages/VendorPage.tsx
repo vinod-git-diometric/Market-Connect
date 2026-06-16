@@ -6,7 +6,7 @@ import type { Product } from "@workspace/api-client-react";
 import ReservationDrawer from "@/components/ReservationDrawer";
 import UnitedMainHeader from "@/components/UnitedMainHeader";
 
-import belliniImg from "@/assets/vendor-bellini.png";
+import belliniImg from "@/assets/bellini-logo.png";
 import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
 import craveImg from "@/assets/crave-logo.jpeg";
@@ -291,7 +291,7 @@ function ProductCard({
   delay: number;
   onReserve: (product: Product) => void;
 }) {
-  const productImg = productImages[product.id];
+  const productImg = product.imageUrl || productImages[product.id];
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
