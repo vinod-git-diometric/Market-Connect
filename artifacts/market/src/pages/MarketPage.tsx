@@ -10,7 +10,7 @@ import heroImg from "@/assets/hero-market-real.jpg";
 import belliniImg from "@/assets/vendor-bellini.png";
 import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
-import craveImg from "@/assets/vendor-crave.png";
+import craveImg from "@/assets/crave-pancakes.jpeg";
 import spiceweaselImg from "@/assets/vendor-spiceweasel.png";
 import riverdaleImg from "@/assets/vendor-riverdale-real.jpg";
 import teresaImg from "@/assets/vendor-teresa.png";

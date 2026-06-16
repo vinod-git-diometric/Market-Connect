@@ -9,7 +9,10 @@ import UnitedMainHeader from "@/components/UnitedMainHeader";
 import belliniImg from "@/assets/vendor-bellini.png";
 import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
-import craveImg from "@/assets/vendor-crave.png";
+import craveImg from "@/assets/crave-pancakes.jpeg";
+import craveProductWaffle from "@/assets/crave-waffle-pistachio.jpeg";
+import craveProductPancakes from "@/assets/crave-pancakes.jpeg";
+import craveProductMocktail from "@/assets/crave-mocktail.jpeg";
 import spiceweaselImg from "@/assets/vendor-spiceweasel.png";
 import riverdaleImg from "@/assets/vendor-riverdale-real.jpg";
 import riverdaleProductTomatoes from "@/assets/riverdale-tomatoes.jpg";
@@ -37,6 +40,9 @@ const productImages: Record<number, string> = {
   19: riverdaleProductPeppers,
   20: riverdaleProductEggplant,
   21: riverdaleProductApples,
+  22: craveProductWaffle,
+  23: craveProductPancakes,
+  25: craveProductMocktail,
 };
 
 function getVendorImage(name: string, imageUrl?: string | null): string | undefined {
