@@ -355,6 +355,14 @@ export default function MarketPage() {
 
   return (
     <div className="min-h-screen bg-background" data-testid="market-page">
+      <nav className="flex items-center px-5 py-3 border-b border-border/40">
+        <a
+          href="https://unitedmain.com"
+          className="text-xs tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors"
+        >
+          ← Return to United Main
+        </a>
+      </nav>
       <HeroSection nextMarketDate={data.nextMarketDate} />
       <WeekHighlightsSection vendors={data.vendors} />
 
