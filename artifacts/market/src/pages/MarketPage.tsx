@@ -195,7 +195,7 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-[60vh] flex flex-col items-center justify-center px-5 pt-16 pb-12 text-center"
+      className="relative min-h-[42vh] md:min-h-[60vh] flex flex-col items-center justify-center px-5 pt-10 pb-7 md:pt-16 md:pb-12 text-center"
       style={{
         background:
           "radial-gradient(ellipse 80% 60% at 50% 0%, hsl(43 60% 30% / 0.25), transparent)",
@@ -210,10 +210,10 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
         <p className="text-[11px] font-sans uppercase tracking-widest text-primary mb-3">
           Stoneham, MA
         </p>
-        <h1 className="font-serif text-4xl md:text-5xl italic leading-tight text-foreground mb-3">
+        <h1 className="font-serif text-3xl md:text-5xl italic leading-tight text-foreground mb-2 md:mb-3">
           The Stoneham<br />Farmers Market
         </h1>
-        <div className="w-16 h-px bg-primary mx-auto my-4" />
+        <div className="w-16 h-px bg-primary mx-auto my-3 md:my-4" />
         <p className="text-sm text-muted-foreground leading-relaxed mb-2">
           Real food. Real neighbors. Every Thursday afternoon.
         </p>
@@ -225,7 +225,7 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
         <a
           href="#vendors"
           data-testid="hero-cta"
-          className="inline-block mt-8 px-6 py-2.5 bg-primary text-primary-foreground font-sans text-sm font-medium rounded-[4px] hover:opacity-90 transition-opacity tracking-wide"
+          className="inline-block mt-5 md:mt-8 px-6 py-2.5 bg-primary text-primary-foreground font-sans text-sm font-medium rounded-[4px] hover:opacity-90 transition-opacity tracking-wide"
         >
           Meet the vendors
         </a>
