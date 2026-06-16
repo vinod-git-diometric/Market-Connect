@@ -10,7 +10,12 @@ import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
 import craveImg from "@/assets/vendor-crave.png";
 import spiceweaselImg from "@/assets/vendor-spiceweasel.png";
-import riverdaleImg from "@/assets/vendor-riverdale.png";
+import riverdaleImg from "@/assets/vendor-riverdale-real.jpg";
+import riverdaleProductTomatoes from "@/assets/riverdale-tomatoes.jpg";
+import riverdaleProductBlueberries from "@/assets/riverdale-blueberries.jpg";
+import riverdaleProductPeppers from "@/assets/riverdale-peppers.jpg";
+import riverdaleProductEggplant from "@/assets/riverdale-eggplant.jpg";
+import riverdaleProductApples from "@/assets/riverdale-apples.jpg";
 import teresaImg from "@/assets/vendor-teresa.png";
 import aaronapImg from "@/assets/vendor-aaronap.png";
 
@@ -23,6 +28,14 @@ const vendorImages: Record<string, string> = {
   "Riverdale Farm": riverdaleImg,
   "Teresa's Farm": teresaImg,
   "Aaronap Cellars": aaronapImg,
+};
+
+const productImages: Record<number, string> = {
+  17: riverdaleProductTomatoes,
+  18: riverdaleProductBlueberries,
+  19: riverdaleProductPeppers,
+  20: riverdaleProductEggplant,
+  21: riverdaleProductApples,
 };
 
 function getVendorImage(name: string, imageUrl?: string | null): string | undefined {
@@ -270,42 +283,54 @@ function ProductCard({
   delay: number;
   onReserve: (product: Product) => void;
 }) {
+  const productImg = productImages[product.id];
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] }}
       data-testid={`vendor-page-product-${product.id}`}
-      className="border border-border rounded-[4px] bg-card p-5"
+      className="border border-border rounded-[4px] bg-card overflow-hidden"
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex-1 min-w-0">
-          <p className="font-sans font-medium text-foreground leading-snug">{product.name}</p>
-          {product.price && (
-            <p className="text-sm text-primary mt-0.5 font-medium">{product.price}</p>
+      {productImg && (
+        <div className="w-full h-40 overflow-hidden">
+          <img
+            src={productImg}
+            alt={product.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1 min-w-0">
+            <p className="font-sans font-medium text-foreground leading-snug">{product.name}</p>
+            {product.price && (
+              <p className="text-sm text-primary mt-0.5 font-medium">{product.price}</p>
+            )}
+          </div>
+          {canReserve && product.reservationAllowed && (
+            <button
+              onClick={() => onReserve(product)}
+              data-testid={`reserve-btn-${product.id}`}
+              className="flex-shrink-0 text-xs font-sans font-medium bg-primary text-primary-foreground rounded-[4px] px-4 py-2 hover:opacity-90 transition-opacity whitespace-nowrap"
+            >
+              Reserve
+            </button>
           )}
         </div>
-        {canReserve && product.reservationAllowed && (
-          <button
-            onClick={() => onReserve(product)}
-            data-testid={`reserve-btn-${product.id}`}
-            className="flex-shrink-0 text-xs font-sans font-medium bg-primary text-primary-foreground rounded-[4px] px-4 py-2 hover:opacity-90 transition-opacity whitespace-nowrap"
-          >
-            Reserve
-          </button>
+        {product.description && (
+          <p className="text-sm text-muted-foreground leading-relaxed mt-2">{product.description}</p>
+        )}
+        {product.allergenNote && (
+          <p className="text-[11px] text-muted-foreground/60 italic mt-2">{product.allergenNote}</p>
+        )}
+        {product.maxPerReservation && canReserve && product.reservationAllowed && (
+          <p className="text-[11px] text-muted-foreground/60 mt-1">
+            Max {product.maxPerReservation} per reservation
+          </p>
         )}
       </div>
-      {product.description && (
-        <p className="text-sm text-muted-foreground leading-relaxed mt-2">{product.description}</p>
-      )}
-      {product.allergenNote && (
-        <p className="text-[11px] text-muted-foreground/60 italic mt-2">{product.allergenNote}</p>
-      )}
-      {product.maxPerReservation && canReserve && product.reservationAllowed && (
-        <p className="text-[11px] text-muted-foreground/60 mt-1">
-          Max {product.maxPerReservation} per reservation
-        </p>
-      )}
     </motion.div>
   );
 }

@@ -11,7 +11,7 @@ import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
 import craveImg from "@/assets/vendor-crave.png";
 import spiceweaselImg from "@/assets/vendor-spiceweasel.png";
-import riverdaleImg from "@/assets/vendor-riverdale.png";
+import riverdaleImg from "@/assets/vendor-riverdale-real.jpg";
 import teresaImg from "@/assets/vendor-teresa.png";
 import aaronapImg from "@/assets/vendor-aaronap.png";
 
