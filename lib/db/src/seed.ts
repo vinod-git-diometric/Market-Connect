@@ -17,6 +17,7 @@ async function seed() {
         description:
           "Stone-oven sourdoughs, focaccia, and seasonal pastries baked in small batches every Friday night for Saturday market. Each loaf is made with heritage grain and a 48-hour cold ferment.",
         location: "Melrose, MA",
+        website: "https://www.bellinibakingco.com/",
         instagram: "@bellinibakingco",
         launchMode: "reserve_for_pickup",
         status: "live",
@@ -30,6 +31,7 @@ async function seed() {
         description:
           "Argentinian empanadas made fresh every market morning — beef & chimichurri, roasted corn & poblano, and rotating seasonal specials. Vegetarian and gluten-free options available.",
         location: "Stoneham, MA",
+        website: "https://delsurnatural.com",
         instagram: "@delsurempanadas",
         launchMode: "reserve_for_pickup",
         status: "live",
@@ -79,6 +81,7 @@ async function seed() {
       {
         name: "Teresa's Farm",
         contactName: "Teresa Novak",
+        website: "https://teresa-farm.com",
         description:
           "Fourth-generation family farm in Reading raising heritage breed chickens, ducks, and turkeys on open pasture. Offering seasonal vegetables, fresh eggs, and cut flowers.",
         location: "Reading, MA",
