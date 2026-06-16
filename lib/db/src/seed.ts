@@ -15,13 +15,13 @@ async function seed() {
         contactName: "Maria Bellini",
         email: "maria@bellinibaking.com",
         description:
-          "Stone-oven sourdoughs, focaccia, and seasonal pastries baked in small batches every Friday night for Saturday market. Each loaf is made with heritage grain and a 48-hour cold ferment.",
+          "Stone-oven sourdoughs, focaccia, and seasonal pastries baked in small batches every Wednesday night for Thursday market. Each loaf is made with heritage grain and a 48-hour cold ferment.",
         location: "Melrose, MA",
         website: "https://www.bellinibakingco.com/",
         instagram: "@bellinibakingco",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "Saturday, June 20",
+        marketDates: "Thursday, June 18",
         pickupInstructions: "Pick up at the Bellini Baking table, near the east entrance. Bring your reservation code.",
       },
       {
@@ -35,7 +35,7 @@ async function seed() {
         instagram: "@delsurempanadas",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "Saturday, June 20",
+        marketDates: "Thursday, June 18",
         pickupInstructions: "Hot empanadas are ready by 9am. Show your code at pickup — quantities are limited.",
       },
       {
@@ -49,7 +49,7 @@ async function seed() {
         instagram: "@wilmingtonhoneybee",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "Saturday, June 20",
+        marketDates: "Thursday, June 18",
         pickupInstructions: "Look for the yellow banner near the main entrance.",
       },
       {
@@ -62,7 +62,7 @@ async function seed() {
         instagram: "@cravecreations_ma",
         launchMode: "featured_products",
         status: "live",
-        marketDates: "Saturday, June 20",
+        marketDates: "Thursday, June 18",
       },
       {
         name: "Spice Weasel Sauce",
@@ -75,7 +75,7 @@ async function seed() {
         instagram: "@spiceweaselsauce",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "Saturday, June 20",
+        marketDates: "Thursday, June 18",
         pickupInstructions: "First come, first served on walk-ins. Reserved bottles are held until 10:30am.",
       },
       {
@@ -87,7 +87,7 @@ async function seed() {
         location: "Reading, MA",
         launchMode: "featured_products",
         status: "live",
-        marketDates: "Saturday, June 20",
+        marketDates: "Thursday, June 18",
       },
       {
         name: "Riverdale Farm",
@@ -97,7 +97,7 @@ async function seed() {
         location: "North Reading, MA",
         launchMode: "featured_products",
         status: "live",
-        marketDates: "Saturday, June 20",
+        marketDates: "Thursday, June 18",
       },
       {
         name: "Aaronap Cellars",
@@ -109,7 +109,7 @@ async function seed() {
         instagram: "@aaronapcellars",
         launchMode: "profile_only",
         status: "live",
-        marketDates: "Saturday, June 20",
+        marketDates: "Thursday, June 18",
       },
     ])
     .returning();

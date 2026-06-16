@@ -75,9 +75,9 @@ router.get("/market", async (req, res) => {
 function getNextMarketDate(): string {
   const now = new Date();
   const day = now.getDay();
-  const daysUntilSaturday = (4 - day + 7) % 7 || 7;
+  const daysUntilThursday = (4 - day + 7) % 7 || 7;
   const next = new Date(now);
-  next.setDate(now.getDate() + daysUntilSaturday);
+  next.setDate(now.getDate() + daysUntilThursday);
   return next.toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
