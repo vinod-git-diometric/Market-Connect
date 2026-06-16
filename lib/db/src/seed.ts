@@ -29,7 +29,7 @@ async function seed() {
         contactName: "Carlos & Ana Suarez",
         email: "hola@delsurempanadas.com",
         description:
-          "Argentinian empanadas made fresh every market morning — beef & chimichurri, roasted corn & poblano, and rotating seasonal specials. Vegetarian and gluten-free options available.",
+          "Argentinian and Chilean-inspired empanadas made with all-natural ingredients and baked, never fried. Frozen 6-packs ready to take home and bake. Born in Reading, MA.",
         location: "Stoneham, MA",
         website: "https://delsurnatural.com",
         instagram: "@delsurempanadas",
@@ -155,9 +155,11 @@ async function seed() {
       // Del Sur Empanadas
       {
         vendorId: vendorMap["Del Sur Empanadas"],
-        name: "Beef & Chimichurri (6-pack)",
-        description: "Classic Argentinian beef with house-made chimichurri. Baked, not fried.",
+        name: "Fabiola's Traditional Beef (6-pack)",
+        description: "Classic Argentine-style beef empanadas — ground beef, onions, hard-boiled eggs, and raisins. All-natural, baked not fried. Frozen, ready to bake at home. Dairy free.",
         price: "$16",
+        imageUrl: "https://133739804.cdn6.editmysite.com/uploads/1/3/3/7/133739804/ATJY4UCEEU22SZEW2HT5LJN2.jpeg",
+        allergenNote: "Contains: wheat, eggs. Dairy free.",
         reservationAllowed: true,
         maxPerReservation: 3,
         quantityAvailable: 40,
@@ -165,14 +167,15 @@ async function seed() {
       },
       {
         vendorId: vendorMap["Del Sur Empanadas"],
-        name: "Roasted Corn & Poblano (6-pack)",
-        description: "Vegetarian. Roasted corn, poblano pepper, queso fresco.",
+        name: "NMC: New Mexico Chicken (6-pack)",
+        description: "Chicken breast with lime juice, roasted poblano peppers, sofrito, cheddar cheese, and corn. All-natural, baked not fried. Frozen, ready to bake at home.",
         price: "$15",
+        imageUrl: "https://133739804.cdn6.editmysite.com/uploads/1/3/3/7/133739804/Y67ZCJNVMJNWS2GATUNJZLDO.jpeg",
+        allergenNote: "Contains: wheat, milk.",
         reservationAllowed: true,
         maxPerReservation: 3,
         quantityAvailable: 30,
         status: "live",
-        allergenNote: "Contains dairy",
       },
       // Wilmington Honey Bee
       {
