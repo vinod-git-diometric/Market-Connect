@@ -22,7 +22,7 @@ async function seed() {
         launchMode: "reserve_for_pickup",
         status: "live",
         marketDates: "Thursday, June 18",
-        pickupInstructions: "Pick up at the Bellini Baking table, near the east entrance. Bring your reservation code.",
+        pickupInstructions: "Pick up at the vendor tent by showing your confirmation email.",
       },
       {
         name: "Del Sur Empanadas",
@@ -36,7 +36,7 @@ async function seed() {
         launchMode: "reserve_for_pickup",
         status: "live",
         marketDates: "Thursday, June 18",
-        pickupInstructions: "Hot empanadas are ready by 9am. Show your code at pickup — quantities are limited.",
+        pickupInstructions: "Pick up at the vendor tent by showing your confirmation email.",
       },
       {
         name: "Wilmington Honey Bee",
@@ -50,7 +50,7 @@ async function seed() {
         launchMode: "reserve_for_pickup",
         status: "live",
         marketDates: "Thursday, June 18",
-        pickupInstructions: "Look for the yellow banner near the main entrance.",
+        pickupInstructions: "Pick up at the vendor tent by showing your confirmation email.",
       },
       {
         name: "Crave Creations",
@@ -76,7 +76,7 @@ async function seed() {
         launchMode: "reserve_for_pickup",
         status: "live",
         marketDates: "Thursday, June 18",
-        pickupInstructions: "First come, first served on walk-ins. Reserved bottles are held until 10:30am.",
+        pickupInstructions: "Pick up at the vendor tent by showing your confirmation email.",
       },
       {
         name: "Teresa's Farm",
