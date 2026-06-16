@@ -148,7 +148,7 @@ function VendorSection({
               />
             </div>
           )}
-          <div className="flex flex-col gap-1 mb-4">
+          <div className="flex flex-col gap-1 mb-2">
             {vendor.location && (
               <p className="text-[11px] font-sans uppercase tracking-widest text-muted-foreground">
                 {vendor.location}
@@ -159,34 +159,7 @@ function VendorSection({
             </h2>
           </div>
 
-          {vendor.description && (
-            <p className="text-sm text-muted-foreground leading-relaxed mb-5">{vendor.description}</p>
-          )}
-
-          {isProfileOnly ? (
-            <p className="text-sm text-muted-foreground/60 italic border-l-2 border-border pl-3">
-              This vendor is still stocking their digital table. Check back soon.
-            </p>
-          ) : liveProducts.length > 0 ? (
-            <div className="flex flex-col gap-3" data-testid={`vendor-products-${vendor.id}`}>
-              {liveProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  launchMode={vendor.launchMode}
-                  onReserve={(p) => onReserve(p, vendor)}
-                />
-              ))}
-            </div>
-          ) : null}
-
-          {vendor.pickupInstructions && vendor.launchMode === "reserve_for_pickup" && (
-            <p className="mt-4 text-[11px] text-muted-foreground/70 italic">
-              Pickup: {vendor.pickupInstructions}
-            </p>
-          )}
-
-          <div className="flex flex-wrap items-center gap-4 mt-5">
+          <div className="flex flex-wrap items-center gap-4 mb-5">
             <Link
               href={`/vendors/${vendor.id}`}
               data-testid={`vendor-page-link-${vendor.id}`}
@@ -215,6 +188,33 @@ function VendorSection({
               </a>
             )}
           </div>
+
+          {vendor.description && (
+            <p className="text-sm text-muted-foreground leading-relaxed mb-5">{vendor.description}</p>
+          )}
+
+          {isProfileOnly ? (
+            <p className="text-sm text-muted-foreground/60 italic border-l-2 border-border pl-3">
+              This vendor is still stocking their digital table. Check back soon.
+            </p>
+          ) : liveProducts.length > 0 ? (
+            <div className="flex flex-col gap-3" data-testid={`vendor-products-${vendor.id}`}>
+              {liveProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  launchMode={vendor.launchMode}
+                  onReserve={(p) => onReserve(p, vendor)}
+                />
+              ))}
+            </div>
+          ) : null}
+
+          {vendor.pickupInstructions && vendor.launchMode === "reserve_for_pickup" && (
+            <p className="mt-4 text-[11px] text-muted-foreground/70 italic">
+              Pickup: {vendor.pickupInstructions}
+            </p>
+          )}
         </div>
       </section>
     </FadeInSection>
