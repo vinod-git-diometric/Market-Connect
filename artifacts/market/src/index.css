@@ -76,52 +76,52 @@
   --elevate-1: rgba(255,255,255, .03);
   --elevate-2: rgba(255,255,255, .06);
 
-  /* Dark warm charcoal — matches unitedmain.com */
-  --background: 30 55% 6%;
-  --foreground: 40 25% 92%;
+  /* Dark teal — anchored to Stoneham CAN's brand blue */
+  --background: 185 48% 8%;
+  --foreground: 185 10% 93%;
 
-  --border: 35 25% 18%;
-  --card: 30 45% 9%;
-  --card-foreground: 40 25% 92%;
-  --card-border: 35 25% 18%;
+  --border: 185 28% 19%;
+  --card: 185 42% 11%;
+  --card-foreground: 185 10% 93%;
+  --card-border: 185 28% 19%;
 
-  --popover: 30 45% 9%;
-  --popover-foreground: 40 25% 92%;
-  --popover-border: 35 25% 18%;
+  --popover: 185 42% 11%;
+  --popover-foreground: 185 10% 93%;
+  --popover-border: 185 28% 19%;
 
-  /* Amber gold — shared United Main brand color */
-  --primary: 43 91% 45%;
-  --primary-foreground: 30 55% 6%;
+  /* Amber gold — Stoneham CAN banner color, United Main shared accent */
+  --primary: 43 82% 50%;
+  --primary-foreground: 185 48% 8%;
 
-  --secondary: 35 30% 15%;
-  --secondary-foreground: 40 25% 92%;
+  --secondary: 185 32% 15%;
+  --secondary-foreground: 185 10% 93%;
 
-  --muted: 30 35% 11%;
-  --muted-foreground: 35 10% 52%;
+  --muted: 185 36% 12%;
+  --muted-foreground: 185 12% 52%;
 
-  --accent: 43 91% 45%;
-  --accent-foreground: 30 55% 6%;
+  --accent: 43 82% 50%;
+  --accent-foreground: 185 48% 8%;
 
   --destructive: 0 72% 51%;
-  --destructive-foreground: 40 25% 92%;
+  --destructive-foreground: 185 10% 93%;
 
-  --input: 35 25% 18%;
-  --ring: 43 91% 45%;
+  --input: 185 28% 19%;
+  --ring: 43 82% 50%;
 
-  --chart-1: 43 91% 45%;
-  --chart-2: 173 58% 39%;
-  --chart-3: 197 37% 24%;
+  --chart-1: 43 82% 50%;
+  --chart-2: 183 45% 40%;
+  --chart-3: 185 35% 28%;
   --chart-4: 43 74% 66%;
-  --chart-5: 27 87% 67%;
+  --chart-5: 170 50% 45%;
 
-  --sidebar: 30 50% 7%;
-  --sidebar-foreground: 40 25% 92%;
-  --sidebar-border: 35 25% 18%;
-  --sidebar-primary: 43 91% 45%;
-  --sidebar-primary-foreground: 30 55% 6%;
-  --sidebar-accent: 35 30% 15%;
-  --sidebar-accent-foreground: 40 25% 92%;
-  --sidebar-ring: 43 91% 45%;
+  --sidebar: 185 45% 9%;
+  --sidebar-foreground: 185 10% 93%;
+  --sidebar-border: 185 28% 19%;
+  --sidebar-primary: 43 82% 50%;
+  --sidebar-primary-foreground: 185 48% 8%;
+  --sidebar-accent: 185 32% 15%;
+  --sidebar-accent-foreground: 185 10% 93%;
+  --sidebar-ring: 43 82% 50%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Cormorant Garamond', serif;
@@ -147,35 +147,35 @@
 }
 
 .dark {
-  --background: 30 55% 6%;
-  --foreground: 40 25% 92%;
+  --background: 185 48% 8%;
+  --foreground: 185 10% 93%;
 
-  --border: 35 25% 18%;
-  --card: 30 45% 9%;
-  --card-foreground: 40 25% 92%;
-  --card-border: 35 25% 18%;
+  --border: 185 28% 19%;
+  --card: 185 42% 11%;
+  --card-foreground: 185 10% 93%;
+  --card-border: 185 28% 19%;
 
-  --popover: 30 45% 9%;
-  --popover-foreground: 40 25% 92%;
-  --popover-border: 35 25% 18%;
+  --popover: 185 42% 11%;
+  --popover-foreground: 185 10% 93%;
+  --popover-border: 185 28% 19%;
 
-  --primary: 43 91% 45%;
-  --primary-foreground: 30 55% 6%;
+  --primary: 43 82% 50%;
+  --primary-foreground: 185 48% 8%;
 
-  --secondary: 35 30% 15%;
-  --secondary-foreground: 40 25% 92%;
+  --secondary: 185 32% 15%;
+  --secondary-foreground: 185 10% 93%;
 
-  --muted: 30 35% 11%;
-  --muted-foreground: 35 10% 52%;
+  --muted: 185 36% 12%;
+  --muted-foreground: 185 12% 52%;
 
-  --accent: 43 91% 45%;
-  --accent-foreground: 30 55% 6%;
+  --accent: 43 82% 50%;
+  --accent-foreground: 185 48% 8%;
 
   --destructive: 0 72% 51%;
-  --destructive-foreground: 40 25% 92%;
+  --destructive-foreground: 185 10% 93%;
 
-  --input: 35 25% 18%;
-  --ring: 43 91% 45%;
+  --input: 185 28% 19%;
+  --ring: 43 82% 50%;
 }
 
 @layer base {
