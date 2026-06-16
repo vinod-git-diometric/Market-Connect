@@ -81,22 +81,15 @@ function ProductCard({
 
   return (
     <div
-      className="border border-border rounded-[4px] bg-card overflow-hidden flex flex-col"
+      className="border border-border rounded-[4px] bg-card overflow-hidden flex flex-row"
       data-testid={`product-card-${product.id}`}
     >
-      {image && (
-        <div className="w-full h-36 overflow-hidden">
-          <img src={image} alt={product.name} className="w-full h-full object-cover" />
-        </div>
-      )}
-      <div className="p-4 flex flex-col gap-2">
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex-1 min-w-0">
-            <p className="font-sans font-medium text-sm text-foreground leading-snug">{product.name}</p>
-            {product.price && (
-              <p className="text-xs text-primary font-medium mt-0.5">{product.price}</p>
-            )}
-          </div>
+      <div className="p-4 flex flex-col gap-2 flex-1 min-w-0">
+        <div className="flex-1 min-w-0">
+          <p className="font-sans font-medium text-sm text-foreground leading-snug">{product.name}</p>
+          {product.price && (
+            <p className="text-xs text-primary font-medium mt-0.5">{product.price}</p>
+          )}
         </div>
         {product.description && (
           <p className="text-xs text-muted-foreground leading-relaxed">{product.description}</p>
@@ -114,6 +107,11 @@ function ProductCard({
           </button>
         )}
       </div>
+      {image && (
+        <div className="w-28 shrink-0 self-stretch overflow-hidden">
+          <img src={image} alt={product.name} className="w-full h-full object-cover" />
+        </div>
+      )}
     </div>
   );
 }
