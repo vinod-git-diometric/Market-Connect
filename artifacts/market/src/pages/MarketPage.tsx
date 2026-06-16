@@ -230,11 +230,11 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
         </h1>
         <div className="w-16 h-px bg-primary mx-auto my-3 md:my-4" />
         <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-          Real food. Real neighbors. Every Thursday, 2:30–6:30pm.
+          Real food. Real neighbors. Every Thursday afternoon.
         </p>
         {nextMarketDate && (
           <p className="text-sm font-sans font-medium text-foreground mt-1">
-            Next market: {nextMarketDate}
+            Next market: {nextMarketDate} · 2:30–6:30pm
           </p>
         )}
         <a
