@@ -43,7 +43,7 @@ async function seed() {
         contactName: "James Alvarez",
         email: "james@wilmingtonhoneybee.com",
         description:
-          "Hyper-local raw honey from hives maintained on wildflower meadows in Wilmington and Woburn. Also beeswax candles, lip balms, and seasonal creamed honey varieties.",
+          "Hyper-local raw honey harvested from hives maintained on wildflower meadows in Wilmington and Woburn. Raw, unfiltered, and available in 8oz, 1lb, and 2lb sizes.",
         location: "Wilmington, MA",
         website: "https://wilmingtonhoneybee.com",
         instagram: "@wilmingtonhoneybee",
