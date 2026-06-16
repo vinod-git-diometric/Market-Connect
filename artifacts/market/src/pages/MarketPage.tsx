@@ -235,9 +235,7 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
 }
 
 function WeekHighlightsSection({ vendors }: { vendors: Vendor[] }) {
-  const featuredVendors = vendors.filter(
-    (v) => v.launchMode !== "profile_only"
-  );
+  const featuredVendors = vendors;
   if (featuredVendors.length === 0) return null;
 
   return (
