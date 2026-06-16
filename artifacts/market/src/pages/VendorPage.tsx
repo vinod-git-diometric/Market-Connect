@@ -9,7 +9,7 @@ import UnitedMainHeader from "@/components/UnitedMainHeader";
 import belliniImg from "@/assets/vendor-bellini.png";
 import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
-import craveImg from "@/assets/crave-pancakes.jpeg";
+import craveImg from "@/assets/crave-logo.jpeg";
 import craveProductWaffle from "@/assets/crave-waffle-pistachio.jpeg";
 import craveProductPancakes from "@/assets/crave-pancakes.jpeg";
 import craveProductMocktail from "@/assets/crave-mocktail.jpeg";
