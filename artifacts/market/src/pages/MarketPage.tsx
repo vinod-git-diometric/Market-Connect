@@ -198,7 +198,7 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
       className="relative min-h-[60vh] flex flex-col items-center justify-center px-5 pt-16 pb-12 text-center"
       style={{
         background:
-          "radial-gradient(ellipse 80% 60% at 50% 0%, hsl(43 57% 88% / 0.6), transparent), hsl(42 47% 96%)",
+          "radial-gradient(ellipse 80% 60% at 50% 0%, hsl(43 60% 30% / 0.25), transparent)",
       }}
     >
       <motion.div
@@ -225,7 +225,7 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
         <a
           href="#vendors"
           data-testid="hero-cta"
-          className="inline-block mt-8 px-6 py-2.5 bg-primary text-primary-foreground font-sans text-sm font-medium rounded-[4px] hover:opacity-90 transition-opacity"
+          className="inline-block mt-8 px-6 py-2.5 bg-primary text-primary-foreground font-sans text-sm font-medium rounded-[4px] hover:opacity-90 transition-opacity tracking-wide"
         >
           Meet the vendors
         </a>
@@ -270,8 +270,7 @@ function TrustSection() {
     <FadeInSection>
       <section
         data-testid="trust-section"
-        className="border-t border-border py-12 px-5"
-        style={{ background: "hsl(42 57% 91% / 0.5)" }}
+        className="border-t border-border py-12 px-5 bg-muted/60"
       >
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-[11px] font-sans uppercase tracking-widest text-muted-foreground mb-4">
@@ -385,9 +384,14 @@ export default function MarketPage() {
       <TrustSection />
 
       <footer className="border-t border-border py-8 px-5 text-center">
-        <p className="text-[11px] font-sans text-muted-foreground/60 uppercase tracking-widest">
+        <a
+          href="https://unitedmain.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[11px] font-sans text-muted-foreground/60 uppercase tracking-widest hover:text-primary transition-colors"
+        >
           A United Main pilot &mdash; Stoneham, MA
-        </p>
+        </a>
       </footer>
 
       <ReservationDrawer

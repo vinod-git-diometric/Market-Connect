@@ -237,9 +237,14 @@ export default function VendorPage() {
         >
           ← Back to all vendors
         </Link>
-        <p className="text-[10px] font-sans text-muted-foreground/50 uppercase tracking-widest mt-3">
+        <a
+          href="https://unitedmain.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[10px] font-sans text-muted-foreground/50 uppercase tracking-widest mt-3 block hover:text-primary transition-colors"
+        >
           A United Main pilot &mdash; Stoneham, MA
-        </p>
+        </a>
       </footer>
 
       <ReservationDrawer
