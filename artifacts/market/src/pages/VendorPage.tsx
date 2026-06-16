@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRoute, Link } from "wouter";
 import { motion } from "framer-motion";
 import { useGetVendor, getGetVendorQueryKey } from "@workspace/api-client-react";
@@ -38,6 +38,8 @@ export default function VendorPage() {
     id ?? 0,
     { query: { enabled: !!id, queryKey: getGetVendorQueryKey(id ?? 0) } }
   );
+
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -86,12 +88,12 @@ export default function VendorPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="w-full aspect-[16/7] overflow-hidden"
+          className="w-full h-[200px] md:h-[280px] overflow-hidden"
         >
           <img
             src={image}
             alt={vendor.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
         </motion.div>
       )}
