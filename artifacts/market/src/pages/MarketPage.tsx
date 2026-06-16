@@ -16,6 +16,26 @@ import riverdaleImg from "@/assets/vendor-riverdale-real.jpg";
 import teresaImg from "@/assets/vendor-teresa.png";
 import aaronapImg from "@/assets/vendor-aaronap.png";
 
+import riverdaleProductTomatoes from "@/assets/riverdale-tomatoes.jpg";
+import riverdaleProductBlueberries from "@/assets/riverdale-blueberries.jpg";
+import riverdaleProductPeppers from "@/assets/riverdale-peppers.jpg";
+import riverdaleProductEggplant from "@/assets/riverdale-eggplant.jpg";
+import riverdaleProductApples from "@/assets/riverdale-apples.jpg";
+import craveProductWaffle from "@/assets/crave-waffle-pistachio.jpeg";
+import craveProductPancakes from "@/assets/crave-pancakes.jpeg";
+import craveProductMocktail from "@/assets/crave-mocktail.jpeg";
+
+const productImages: Record<number, string> = {
+  17: riverdaleProductTomatoes,
+  18: riverdaleProductBlueberries,
+  19: riverdaleProductPeppers,
+  20: riverdaleProductEggplant,
+  21: riverdaleProductApples,
+  22: craveProductWaffle,
+  23: craveProductPancakes,
+  25: craveProductMocktail,
+};
+
 const vendorImages: Record<string, string> = {
   "Bellini Baking Co.": belliniImg,
   "Del Sur Empanadas": delsurImg,
@@ -57,35 +77,43 @@ function ProductCard({
   onReserve: (product: Product) => void;
 }) {
   const showReserve = launchMode === "reserve_for_pickup" && product.reservationAllowed;
+  const image = productImages[product.id];
 
   return (
     <div
-      className="border border-border rounded-[4px] bg-card p-4 flex flex-col gap-2"
+      className="border border-border rounded-[4px] bg-card overflow-hidden flex flex-col"
       data-testid={`product-card-${product.id}`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex-1 min-w-0">
-          <p className="font-sans font-medium text-sm text-foreground leading-snug">{product.name}</p>
-          {product.price && (
-            <p className="text-xs text-muted-foreground mt-0.5">{product.price}</p>
-          )}
+      {image && (
+        <div className="w-full h-36 overflow-hidden">
+          <img src={image} alt={product.name} className="w-full h-full object-cover" />
         </div>
+      )}
+      <div className="p-4 flex flex-col gap-2">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex-1 min-w-0">
+            <p className="font-sans font-medium text-sm text-foreground leading-snug">{product.name}</p>
+            {product.price && (
+              <p className="text-xs text-primary font-medium mt-0.5">{product.price}</p>
+            )}
+          </div>
+        </div>
+        {product.description && (
+          <p className="text-xs text-muted-foreground leading-relaxed">{product.description}</p>
+        )}
+        {product.allergenNote && (
+          <p className="text-[11px] text-muted-foreground/70 italic">{product.allergenNote}</p>
+        )}
+        {showReserve && (
+          <button
+            onClick={() => onReserve(product)}
+            data-testid={`reserve-btn-${product.id}`}
+            className="mt-1 text-xs font-sans font-medium border border-primary text-primary rounded-[4px] px-3 py-1.5 hover:bg-primary hover:text-primary-foreground transition-colors self-start"
+          >
+            Reserve for pickup
+          </button>
+        )}
       </div>
-      {product.description && (
-        <p className="text-xs text-muted-foreground leading-relaxed">{product.description}</p>
-      )}
-      {product.allergenNote && (
-        <p className="text-[11px] text-muted-foreground/70 italic">{product.allergenNote}</p>
-      )}
-      {showReserve && (
-        <button
-          onClick={() => onReserve(product)}
-          data-testid={`reserve-btn-${product.id}`}
-          className="mt-1 text-xs font-sans font-medium border border-primary text-primary rounded-[4px] px-3 py-1.5 hover:bg-primary hover:text-primary-foreground transition-colors self-start"
-        >
-          Reserve for pickup
-        </button>
-      )}
     </div>
   );
 }
