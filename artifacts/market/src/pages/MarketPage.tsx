@@ -5,7 +5,7 @@ import { useGetMarketPage } from "@workspace/api-client-react";
 import type { Vendor, Product } from "@workspace/api-client-react";
 import ReservationDrawer from "@/components/ReservationDrawer";
 
-import heroImg from "@/assets/hero-market.png";
+import heroImg from "@/assets/hero-market-real.jpg";
 import belliniImg from "@/assets/vendor-bellini.png";
 import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
