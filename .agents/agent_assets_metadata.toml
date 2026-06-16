@@ -48,3 +48,9 @@ id = "PEEVOtZFtYxk5MXGXfCBC"
 uri = "file://artifacts/market/src/assets/vendor-aaronap.png"
 type = "image"
 title = "local wine bottles"
+
+[[generated]]
+id = "dWtoiPs8X3R6gIhGw-56Y"
+uri = "file://artifacts/market/src/assets/hero-market.png"
+type = "image"
+title = "farmers market hero scene"

@@ -5,6 +5,7 @@ import { useGetMarketPage } from "@workspace/api-client-react";
 import type { Vendor, Product } from "@workspace/api-client-react";
 import ReservationDrawer from "@/components/ReservationDrawer";
 
+import heroImg from "@/assets/hero-market.png";
 import belliniImg from "@/assets/vendor-bellini.png";
 import delsurImg from "@/assets/vendor-delsur.png";
 import honeybeeImg from "@/assets/vendor-honeybee.png";
@@ -195,17 +196,30 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-[42vh] md:min-h-[60vh] flex flex-col items-center justify-center px-5 pt-10 pb-7 md:pt-16 md:pb-12 text-center"
-      style={{
-        background:
-          "radial-gradient(ellipse 80% 60% at 50% 0%, hsl(43 60% 30% / 0.25), transparent)",
-      }}
+      className="relative min-h-[42vh] md:min-h-[60vh] flex flex-col items-center justify-center px-5 pt-10 pb-7 md:pt-16 md:pb-12 text-center overflow-hidden"
     >
+      {/* Hero background image */}
+      <img
+        src={heroImg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+      {/* Teal overlay — matches brand color, ensures text contrast */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "hsl(200 46% 16% / 0.82)" }}
+      />
+      {/* Gold radial glow at top */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "radial-gradient(ellipse 80% 50% at 50% 0%, hsl(43 60% 30% / 0.30), transparent)" }}
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-lg w-full"
+        className="relative z-10 max-w-lg w-full"
       >
         <p className="text-[11px] font-sans uppercase tracking-widest text-primary mb-3">
           Stoneham, MA
