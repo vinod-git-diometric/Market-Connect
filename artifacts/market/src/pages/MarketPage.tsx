@@ -26,11 +26,8 @@ import craveProductPancakes from "@/assets/crave-pancakes.jpeg";
 import craveProductMocktail from "@/assets/crave-mocktail.jpeg";
 
 const productImages: Record<number, string> = {
-  17: riverdaleProductTomatoes,
-  18: riverdaleProductBlueberries,
   19: riverdaleProductPeppers,
   20: riverdaleProductEggplant,
-  21: riverdaleProductApples,
   22: craveProductWaffle,
   23: craveProductPancakes,
   25: craveProductMocktail,
