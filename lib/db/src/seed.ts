@@ -95,7 +95,7 @@ async function seed() {
         description:
           "Family farm growing over 200 acres in Groton, MA. Seasonal produce including strawberries, broccoli, peppers, eggplant, lettuce, cabbage, and root vegetables — harvested fresh for each market.",
         location: "Groton, MA",
-        launchMode: "featured_products",
+        launchMode: "reserve_for_pickup",
         status: "live",
         marketDates: "Thursday, June 18",
       },
@@ -315,14 +315,16 @@ async function seed() {
         quantityAvailable: 15,
         status: "live",
       },
-      // Riverdale Farm (in-season produce, no reservations)
+      // Riverdale Farm (reserve for pickup)
       {
         vendorId: vendorMap["Riverdale Farm"],
         name: "Strawberries",
         description: "Fresh-picked strawberries straight from the fields. Sweet, local, and in peak season.",
         price: "$7 / pint | $14 / quart",
         imageUrl: "/images/riverdale-strawberries.png",
-        reservationAllowed: false,
+        reservationAllowed: true,
+        maxPerReservation: 2,
+        quantityAvailable: 15,
         status: "live",
       },
       {
@@ -331,7 +333,9 @@ async function seed() {
         description: "Crisp heads of lettuce grown fresh on the farm. Great for salads and sandwiches.",
         price: "$4 / head",
         imageUrl: "/images/riverdale-lettuce.png",
-        reservationAllowed: false,
+        reservationAllowed: true,
+        maxPerReservation: 2,
+        quantityAvailable: 25,
         status: "live",
       },
       {
@@ -339,7 +343,9 @@ async function seed() {
         name: "Sweet Peppers",
         description: "Colorful sweet peppers, harvested at peak ripeness. Great for roasting, stir-fries, or eating fresh.",
         price: "$3.50 / lb",
-        reservationAllowed: false,
+        reservationAllowed: true,
+        maxPerReservation: 3,
+        quantityAvailable: 20,
         status: "live",
       },
       {
@@ -347,7 +353,9 @@ async function seed() {
         name: "Eggplant",
         description: "Italian and globe eggplant grown on the farm. Perfect for grilling, roasting, or making eggplant parm.",
         price: "$3.50 / lb",
-        reservationAllowed: false,
+        reservationAllowed: true,
+        maxPerReservation: 3,
+        quantityAvailable: 20,
         status: "live",
       },
       {
@@ -356,7 +364,9 @@ async function seed() {
         description: "Farm-fresh broccoli with tight, dark green florets. Harvested at peak tenderness.",
         price: "$3.50 / lb",
         imageUrl: "/images/riverdale-broccoli.png",
-        reservationAllowed: false,
+        reservationAllowed: true,
+        maxPerReservation: 3,
+        quantityAvailable: 20,
         status: "live",
       },
       {
@@ -365,7 +375,9 @@ async function seed() {
         description: "Dense, fresh-cut cabbage heads from the farm. Great for slaws, stir-fries, and soups.",
         price: "$2.50 / lb",
         imageUrl: "/images/riverdale-cabbage.png",
-        reservationAllowed: false,
+        reservationAllowed: true,
+        maxPerReservation: 3,
+        quantityAvailable: 20,
         status: "live",
       },
       {
@@ -374,7 +386,9 @@ async function seed() {
         description: "Seasonal mix of potatoes, beets, and carrots — sweet and earthy, fresh from the fields.",
         price: "$2.50 / lb",
         imageUrl: "/images/riverdale-root-veg.png",
-        reservationAllowed: false,
+        reservationAllowed: true,
+        maxPerReservation: 3,
+        quantityAvailable: 20,
         status: "live",
       },
       // Teresa's Farm (baked goods)
