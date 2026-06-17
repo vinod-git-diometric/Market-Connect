@@ -54,3 +54,33 @@ id = "dWtoiPs8X3R6gIhGw-56Y"
 uri = "file://artifacts/market/src/assets/hero-market.png"
 type = "image"
 title = "farmers market hero scene"
+
+[[generated]]
+id = "H4IQ8eVaEYhh323XeUfJk"
+uri = "file://artifacts/market/public/images/riverdale-strawberries.png"
+type = "image"
+title = "fresh strawberries pint"
+
+[[generated]]
+id = "7rjURMZYsUFBftc5Y49_a"
+uri = "file://artifacts/market/public/images/riverdale-lettuce.png"
+type = "image"
+title = "fresh green lettuce head"
+
+[[generated]]
+id = "6EBN0FhKcrT0sBiM6qbUa"
+uri = "file://artifacts/market/public/images/riverdale-broccoli.png"
+type = "image"
+title = "fresh broccoli crown"
+
+[[generated]]
+id = "7lw7Ly3Qpb3sZeUNPc7y1"
+uri = "file://artifacts/market/public/images/riverdale-cabbage.png"
+type = "image"
+title = "fresh green cabbage"
+
+[[generated]]
+id = "dQYyiN8mzpvisDBCuz3IE"
+uri = "file://artifacts/market/public/images/riverdale-root-veg.png"
+type = "image"
+title = "potatoes beets carrots root vegetables"
