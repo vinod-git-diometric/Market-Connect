@@ -57,7 +57,7 @@ async function seed() {
         contactName: "Sophie Chen",
         email: "sophie@cravecreations.com",
         description:
-          "Handcrafted chocolates, truffles, and confections made in small batches with ethically-sourced cacao. Seasonal bark, caramels, and signature gift boxes.",
+          "Customizable dessert and snack bar bringing curated indulgence to the market. Choose from waffle sticks, mini pancakes, mini cakes, and lemonades — then build your plate with toppings like fresh fruit, Biscoff crumble, and Oreo, plus sauces from chocolate to salted caramel.",
         location: "Winchester, MA",
         instagram: "@cravecreations_ma",
         launchMode: "featured_products",
@@ -204,8 +204,8 @@ async function seed() {
       {
         vendorId: vendorMap["Crave Creations"],
         name: "Waffle Sticks",
-        description: "Crispy waffle sticks loaded with your choice of toppings — s'mores, banana & Biscoff, Oreo, strawberry, fruity pebbles, and more.",
-        price: "$10",
+        description: "Crispy Belgian waffle sticks with up to 3 toppings and 1 sauce. Toppings: sprinkles, Fruity Pebbles, Oreo crumble, banana, strawberry, Biscoff crumble, whipped cream. Sauces: chocolate, strawberry, salted caramel, pistachio, white chocolate, maple syrup. Extra toppings $0.25 each.",
+        price: "$9 ea. | 2 for $15",
         imageUrl: "/images/crave-waffle-sticks.jpg",
         reservationAllowed: false,
         status: "live",
@@ -213,8 +213,8 @@ async function seed() {
       {
         vendorId: vendorMap["Crave Creations"],
         name: "Mini Pancakes",
-        description: "Fluffy mini pancake bites topped with fruity pebbles, matcha drizzle, Nutella, or your pick of sweet toppings.",
-        price: "$8",
+        description: "Bite-sized fluffy mini pancakes with your choice of toppings and sauces. Order 10 minis for $7 or go big with 15 for $11.",
+        price: "10 for $7 | 15 for $11",
         imageUrl: "/images/crave-mini-pancakes.jpg",
         reservationAllowed: false,
         status: "live",
@@ -230,9 +230,9 @@ async function seed() {
       },
       {
         vendorId: vendorMap["Crave Creations"],
-        name: "Mocktails",
-        description: "Refreshing house-made mocktails with peanut butter, chocolate, and granola-inspired flavors. Ask at the tent for the week's menu.",
-        price: "$6",
+        name: "Lemonades",
+        description: "Fresh house-made lemonades in five flavors: Classic ($4), Strawberry, Lavender, Passion Fruit, or Peach Mango ($5 each). Add a lemonade to any food order for just $3 with the Crave Combo.",
+        price: "$4–$5",
         imageUrl: "/images/crave-mocktails.jpg",
         reservationAllowed: false,
         status: "live",
