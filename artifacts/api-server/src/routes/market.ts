@@ -60,7 +60,9 @@ router.get("/market", async (req, res) => {
       })),
     }));
 
-    const nextMarketDate = getNextMarketDate();
+    // Derive next market date from vendor data (strip time portion if present)
+    const rawDate = vendors[0]?.marketDates ?? "";
+    const nextMarketDate = rawDate.split("·")[0].trim();
 
     res.json({
       nextMarketDate,
@@ -70,19 +72,6 @@ router.get("/market", async (req, res) => {
     req.log.error({ err }, "Failed to get market page");
     res.status(500).json({ error: "Failed to load market data" });
   }
-});
-
-function getNextMarketDate(): string {
-  const now = new Date();
-  const day = now.getDay();
-  const daysUntilThursday = (4 - day + 7) % 7 || 7;
-  const next = new Date(now);
-  next.setDate(now.getDate() + daysUntilThursday);
-  return next.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  });
-}
+})
 
 export default router;
