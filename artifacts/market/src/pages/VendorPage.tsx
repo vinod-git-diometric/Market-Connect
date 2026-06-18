@@ -106,12 +106,12 @@ export default function VendorPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="w-full h-[200px] md:h-[280px] overflow-hidden"
+          className="w-full h-[200px] md:h-[280px] overflow-hidden flex items-center justify-center bg-[#1a2a35]"
         >
           <img
             src={image}
             alt={vendor.name}
-            className="w-full h-full object-cover object-center"
+            className={`w-full h-full ${image.includes("logo") ? "object-contain p-6" : "object-cover object-center"}`}
           />
         </motion.div>
       )}
