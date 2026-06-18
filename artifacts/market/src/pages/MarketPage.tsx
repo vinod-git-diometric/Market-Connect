@@ -313,7 +313,7 @@ function TrustSection() {
             How it works
           </p>
           <h3 className="font-serif text-xl italic text-foreground mb-4">
-            Reserve. Pick up. Pay the farmer.
+            Reserve. Pick up. Pay the vendor.
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-6">
             {[
