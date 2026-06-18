@@ -85,9 +85,9 @@ async function seed() {
         description:
           "Fresh-baked goods, handmade jams, and farm-to-table specialties made in small batches in Boxford, MA. Tarts, braided loaves, Danish, focaccia, and rotating seasonal jams at every market.",
         location: "Boxford, MA",
+        marketDates: "TBD",
         launchMode: "featured_products",
         status: "live",
-        marketDates: "Thursday, June 18",
       },
       {
         name: "Riverdale Farm",
