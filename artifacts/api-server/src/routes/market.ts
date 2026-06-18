@@ -31,6 +31,17 @@ router.get("/market", async (req, res) => {
       productsByVendor[p.vendorId].push(p);
     }
 
+    // Sort: pinned vendors first, then alphabetical
+    const PINNED_ORDER = ["Riverdale Farm", "Wilmington Honey Bee", "Crave Creations"];
+    vendors.sort((a, b) => {
+      const ai = PINNED_ORDER.indexOf(a.name);
+      const bi = PINNED_ORDER.indexOf(b.name);
+      if (ai !== -1 && bi !== -1) return ai - bi;
+      if (ai !== -1) return -1;
+      if (bi !== -1) return 1;
+      return a.name.localeCompare(b.name);
+    });
+
     const vendorsWithProducts = vendors.map((v) => ({
       id: v.id,
       name: v.name,
