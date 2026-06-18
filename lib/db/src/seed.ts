@@ -57,7 +57,7 @@ async function seed() {
         contactName: "Sophie Chen",
         email: "sophie@cravecreations.com",
         description:
-          "Customizable dessert and snack bar bringing curated indulgence to the market. Choose from waffle sticks, mini pancakes, mini cakes, and lemonades — then build your plate with toppings like fresh fruit, Biscoff crumble, and Oreo, plus sauces from chocolate to salted caramel.",
+          "Customizable dessert and snack bar bringing curated indulgence to the market. Choose from waffle sticks, mini pancakes, and lemonades — then build your plate with toppings like fresh fruit, Biscoff crumble, and Oreo, plus sauces from chocolate to salted caramel.",
         location: "Winchester, MA",
         instagram: "@cravecreations_ma",
         launchMode: "featured_products",
@@ -221,19 +221,9 @@ async function seed() {
       },
       {
         vendorId: vendorMap["Crave Creations"],
-        name: "Mini Cakes",
-        description: "Indulgent mini cake servings with layered toppings — banana, toasted marshmallow, graham cracker crumble, and chocolate sauce.",
-        price: "$10",
-        imageUrl: "/images/crave-mini-cakes.jpg",
-        reservationAllowed: false,
-        status: "live",
-      },
-      {
-        vendorId: vendorMap["Crave Creations"],
         name: "Lemonades",
         description: "Fresh house-made lemonades in five flavors: Classic ($4), Strawberry, Lavender, Passion Fruit, or Peach Mango ($5 each). Add a lemonade to any food order for just $3 with the Crave Combo.",
         price: "$4–$5",
-        imageUrl: "/images/crave-mocktails.jpg",
         reservationAllowed: false,
         status: "live",
       },
