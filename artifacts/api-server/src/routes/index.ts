@@ -4,6 +4,7 @@ import marketRouter from "./market";
 import vendorsRouter from "./vendors";
 import reservationsRouter from "./reservations";
 import adminRouter from "./admin";
+import vendorSignupRouter from "./vendor-signup";
 
 const router: IRouter = Router();
 
@@ -12,5 +13,6 @@ router.use(marketRouter);
 router.use(vendorsRouter);
 router.use(reservationsRouter);
 router.use(adminRouter);
+router.use(vendorSignupRouter);
 
 export default router;

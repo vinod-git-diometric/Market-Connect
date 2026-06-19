@@ -420,7 +420,13 @@ export default function MarketPage() {
 
       <TrustSection />
 
-      <footer className="border-t border-border py-8 px-5 text-center">
+      <footer className="border-t border-border py-8 px-5 text-center flex flex-col items-center gap-3">
+        <Link
+          href="/join"
+          className="text-[11px] font-sans text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
+        >
+          Interested in vending? Apply here →
+        </Link>
         <a
           href="https://unitedmain.com"
           target="_blank"
