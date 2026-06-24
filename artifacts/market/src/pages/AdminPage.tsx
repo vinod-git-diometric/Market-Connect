@@ -463,7 +463,7 @@ function VendorRow({
   vendor: { id: number; name: string; contactName: string | null; email: string | null; launchMode: string; status: string; productCount: number };
   onUpdated: (v: AdminVendor) => void;
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [showProducts, setShowProducts] = useState(false);
   const [editing, setEditing] = useState(false);
   const [fullVendor, setFullVendor] = useState<AdminVendor | null>(null);
   const [loadingFull, setLoadingFull] = useState(false);
@@ -471,60 +471,53 @@ function VendorRow({
   const statusDot: Record<string, string> = {
     live: "bg-green-500", draft: "bg-muted-foreground", public_info_drafted: "bg-amber-400",
   };
-  const launchModeLabel: Record<string, string> = {
-    profile_only: "Profile only", featured_products: "Featured", reserve_for_pickup: "Reserve",
+  const statusLabel: Record<string, string> = {
+    live: "Live", draft: "Draft", public_info_drafted: "Info only",
   };
 
-  async function handleExpand() {
-    if (!expanded && !fullVendor) {
+  async function handleEdit() {
+    if (!fullVendor) {
       setLoadingFull(true);
       try {
         const data = await adminFetch<AdminVendor>("GET", `/admin/vendors/${vendor.id}`);
         setFullVendor(data);
       } catch {
-        // continue without full data
+        // proceed with empty form pre-filled from list data
       } finally {
         setLoadingFull(false);
       }
     }
-    setExpanded((v) => !v);
-    setEditing(false);
+    setEditing(true);
   }
 
   return (
-    <div className="border-b border-border/50">
-      <div
-        className="flex items-center gap-2 py-2.5 px-2 hover:bg-muted/30 transition-colors cursor-pointer"
-        onClick={handleExpand}
-      >
-        <span className={`w-2 h-2 rounded-full shrink-0 ${statusDot[vendor.status] ?? "bg-muted-foreground"}`} title={vendor.status} />
-        <span className="text-xs font-medium flex-1 min-w-0 truncate">{vendor.name}</span>
-        <span className="text-[10px] text-muted-foreground hidden sm:block">{vendor.contactName || "—"}</span>
-        <span className="text-[10px] text-muted-foreground hidden md:block">{launchModeLabel[vendor.launchMode] ?? vendor.launchMode}</span>
-        <span className="text-[10px] text-muted-foreground">{vendor.productCount} products</span>
-        <span className="text-[10px] text-muted-foreground ml-1">{expanded ? "▲" : "▼"}</span>
+    <div className="border-b border-border/50 last:border-0">
+      {/* Vendor summary row — always visible */}
+      <div className="flex items-center gap-3 py-3 px-3">
+        <span className={`w-2 h-2 rounded-full shrink-0 ${statusDot[vendor.status] ?? "bg-muted-foreground"}`} title={statusLabel[vendor.status] ?? vendor.status} />
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium text-foreground truncate">{vendor.name}</p>
+          {vendor.contactName && (
+            <p className="text-[10px] text-muted-foreground">{vendor.contactName}</p>
+          )}
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            onClick={() => setShowProducts((v) => !v)}
+            className="text-[10px] text-muted-foreground hover:text-foreground transition-colors border border-border/60 rounded px-2 py-1"
+          >
+            Products ({vendor.productCount}) {showProducts ? "▲" : "▼"}
+          </button>
+          <Btn size="xs" variant="secondary" onClick={handleEdit} disabled={loadingFull}>
+            {loadingFull ? "…" : "Edit"}
+          </Btn>
+        </div>
       </div>
 
-      {expanded && (
-        <div className="px-3 pb-4">
-          {loadingFull && <p className="text-xs text-muted-foreground animate-pulse py-2">Loading…</p>}
-
-          {!loadingFull && !editing && fullVendor && (
-            <div className="flex flex-col gap-1 py-2 text-xs text-muted-foreground">
-              {fullVendor.description && <p className="text-foreground leading-relaxed">{fullVendor.description}</p>}
-              <div className="flex flex-wrap gap-x-4 gap-y-0.5 mt-1">
-                {fullVendor.location && <span><strong className="text-foreground">Location:</strong> {fullVendor.location}</span>}
-                {fullVendor.marketDates && <span><strong className="text-foreground">Market dates:</strong> {fullVendor.marketDates}</span>}
-                {fullVendor.website && <a href={fullVendor.website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{fullVendor.website}</a>}
-                {fullVendor.instagram && <span>{fullVendor.instagram}</span>}
-              </div>
-              <div className="mt-2">
-                <Btn size="xs" variant="secondary" onClick={() => setEditing(true)}>Edit vendor</Btn>
-              </div>
-            </div>
-          )}
-
-          {!loadingFull && editing && fullVendor && (
+      {/* Edit form — shown when Edit is clicked */}
+      {editing && (
+        <div className="px-3 pb-4 border-t border-border/30 bg-muted/10">
+          {fullVendor ? (
             <VendorForm
               initial={{
                 id: fullVendor.id,
@@ -550,8 +543,15 @@ function VendorRow({
               }}
               onCancel={() => setEditing(false)}
             />
+          ) : (
+            <p className="text-xs text-muted-foreground py-2 animate-pulse">Loading vendor data…</p>
           )}
+        </div>
+      )}
 
+      {/* Products panel — shown when Products button is clicked */}
+      {showProducts && (
+        <div className="px-3 pb-4 border-t border-border/30">
           <ProductsPanel vendorId={vendor.id} />
         </div>
       )}
@@ -602,27 +602,20 @@ function VendorsTab() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-3">
-        <p className="text-xs text-muted-foreground">{vendors.length} vendor{vendors.length !== 1 ? "s" : ""}</p>
-        {!addingVendor && (
-          <Btn variant="secondary" onClick={() => setAddingVendor(true)}>+ Add vendor</Btn>
-        )}
-      </div>
-
-      {addingVendor && (
+      {addingVendor ? (
         <div className="mb-4">
           <VendorForm onSave={handleVendorCreated} onCancel={() => setAddingVendor(false)} />
         </div>
+      ) : (
+        <button
+          onClick={() => setAddingVendor(true)}
+          className="w-full mb-4 border-2 border-dashed border-border hover:border-primary hover:text-primary text-muted-foreground rounded-[4px] py-3 text-sm font-sans transition-colors"
+        >
+          + Add new vendor
+        </button>
       )}
 
       <div data-testid="vendors-table" className="border border-border rounded-[4px] overflow-hidden">
-        <div className="flex items-center gap-2 px-2 py-1.5 border-b border-border bg-muted/40">
-          <span className="w-2 shrink-0" />
-          <span className="text-[10px] uppercase tracking-widest text-muted-foreground flex-1">Name</span>
-          <span className="text-[10px] uppercase tracking-widest text-muted-foreground hidden sm:block w-32">Contact</span>
-          <span className="text-[10px] uppercase tracking-widest text-muted-foreground hidden md:block w-24">Mode</span>
-          <span className="text-[10px] uppercase tracking-widest text-muted-foreground w-16 text-right">Products</span>
-        </div>
         {vendors.map((v) => (
           <VendorRow key={v.id} vendor={v} onUpdated={handleVendorUpdated} />
         ))}
@@ -632,6 +625,7 @@ function VendorsTab() {
           </div>
         )}
       </div>
+      <p className="text-[10px] text-muted-foreground mt-2">{vendors.length} vendor{vendors.length !== 1 ? "s" : ""}</p>
     </div>
   );
 }
