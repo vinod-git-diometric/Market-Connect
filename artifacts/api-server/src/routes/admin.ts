@@ -15,7 +15,8 @@ function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   next();
 }
 
-// ── Read routes (no auth required — data is non-sensitive) ──────────────────
+// All admin routes require authentication
+router.use(requireAdminAuth);
 
 router.get("/admin/reservations", async (req, res) => {
   try {

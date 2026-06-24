@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { useListAdminReservations } from "@workspace/api-client-react";
 
 const ADMIN_PASSWORD = "farmerstogo";
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -36,6 +35,20 @@ interface AdminVendor {
   status: string;
   marketDates: string | null;
   pickupInstructions: string | null;
+}
+
+interface AdminReservation {
+  id: number;
+  reservationCode: string;
+  vendorName: string;
+  productName: string;
+  shopperName: string;
+  shopperEmail: string;
+  shopperPhone: string | null;
+  quantity: number;
+  note: string | null;
+  marketDate: string | null;
+  createdAt: string;
 }
 
 interface AdminProduct {
@@ -386,7 +399,17 @@ function ProductsPanel({ vendorId }: { vendorId: number }) {
             {editingProductId === p.id ? (
               <ProductForm
                 vendorId={vendorId}
-                initial={{ ...p, reservationAllowed: p.reservationAllowed.toString() as "true" | "false", quantityAvailable: p.quantityAvailable?.toString() ?? "", maxPerReservation: p.maxPerReservation?.toString() ?? "" }}
+                initial={{
+                  id: p.id,
+                  name: p.name,
+                  description: p.description ?? "",
+                  price: p.price ?? "",
+                  imageUrl: p.imageUrl ?? "",
+                  reservationAllowed: p.reservationAllowed.toString(),
+                  quantityAvailable: p.quantityAvailable?.toString() ?? "",
+                  maxPerReservation: p.maxPerReservation?.toString() ?? "",
+                  status: p.status,
+                }}
                 onSave={(updated) => {
                   setProducts((prev) => prev.map((x) => x.id === updated.id ? updated : x));
                   setEditingProductId(null);
@@ -503,7 +526,22 @@ function VendorRow({
 
           {!loadingFull && editing && fullVendor && (
             <VendorForm
-              initial={{ ...fullVendor }}
+              initial={{
+                name: fullVendor.name,
+                contactName: fullVendor.contactName ?? "",
+                email: fullVendor.email ?? "",
+                phone: fullVendor.phone ?? "",
+                description: fullVendor.description ?? "",
+                location: fullVendor.location ?? "",
+                website: fullVendor.website ?? "",
+                instagram: fullVendor.instagram ?? "",
+                facebook: fullVendor.facebook ?? "",
+                imageUrl: fullVendor.imageUrl ?? "",
+                launchMode: fullVendor.launchMode,
+                status: fullVendor.status,
+                marketDates: fullVendor.marketDates ?? "",
+                pickupInstructions: fullVendor.pickupInstructions ?? "",
+              }}
               onSave={(updated) => {
                 setFullVendor(updated);
                 onUpdated(updated);
@@ -597,10 +635,19 @@ function VendorsTab() {
   );
 }
 
-// ── Reservations Tab (unchanged) ─────────────────────────────────────────────
+// ── Reservations Tab ─────────────────────────────────────────────────────────
 
 function ReservationsTab() {
-  const { data, isLoading, isError } = useListAdminReservations();
+  const [data, setData] = useState<AdminReservation[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    adminFetch<AdminReservation[]>("GET", "/admin/reservations")
+      .then((d) => setData(d))
+      .catch(() => setIsError(true))
+      .finally(() => setIsLoading(false));
+  }, []);
 
   if (isLoading) return <div className="space-y-2">{[1, 2, 3, 4].map((i) => <div key={i} className="h-10 bg-muted rounded animate-pulse" />)}</div>;
   if (isError) return <p className="text-sm text-destructive">Failed to load reservations.</p>;
