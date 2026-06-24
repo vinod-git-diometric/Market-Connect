@@ -181,7 +181,7 @@ const EMPTY_VENDOR = {
 function VendorForm({
   initial, onSave, onCancel,
 }: {
-  initial?: Partial<typeof EMPTY_VENDOR>;
+  initial?: Partial<typeof EMPTY_VENDOR> & { id?: number };
   onSave: (vendor: AdminVendor) => void;
   onCancel: () => void;
 }) {
@@ -527,6 +527,7 @@ function VendorRow({
           {!loadingFull && editing && fullVendor && (
             <VendorForm
               initial={{
+                id: fullVendor.id,
                 name: fullVendor.name,
                 contactName: fullVendor.contactName ?? "",
                 email: fullVendor.email ?? "",
