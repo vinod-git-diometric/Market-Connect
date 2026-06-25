@@ -476,18 +476,16 @@ function VendorRow({
   };
 
   async function handleEdit() {
-    if (!fullVendor) {
-      setLoadingFull(true);
-      try {
-        const data = await adminFetch<AdminVendor>("GET", `/admin/vendors/${vendor.id}`);
-        setFullVendor(data);
-      } catch {
-        // proceed with empty form pre-filled from list data
-      } finally {
-        setLoadingFull(false);
-      }
+    setLoadingFull(true);
+    try {
+      const data = await adminFetch<AdminVendor>("GET", `/admin/vendors/${vendor.id}`);
+      setFullVendor(data);
+      setEditing(true);
+    } catch {
+      alert("Could not load vendor data. Please try again.");
+    } finally {
+      setLoadingFull(false);
     }
-    setEditing(true);
   }
 
   return (
