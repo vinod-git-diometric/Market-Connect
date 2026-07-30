@@ -1,0 +1,85 @@
+I reviewed the [live pilot](https://stoneham-fm.unitedmain.com/market) at desktop and a 400px mobile viewport, including vendor pages and the reservation form.
+
+My verdict: it’s visually distinctive, warm, and ready for controlled pilot use. It already feels more like a local market than an e-commerce template. Before marketing it broadly, I’d address a few clarity and conversion issues.
+
+## Highest-priority changes
+
+1. **Put the location beside the date.**  
+   A first-time visitor can learn when the market happens, but not precisely where. Add:
+
+   `Stoneham Town Common · 340 Main St · Get directions`
+
+   The current official market information lists the Town Common at 340 Main Street. [Stoneham Farmers Market information](https://www.stonehamcan.org/farmersmarket)
+
+2. **Make market status dynamic.**  
+   At 3:39pm on July 30—during market hours—the hero still said “Next market: July 30.” That is a missed excitement opportunity. Use states such as:
+
+   - “Happening now · Open until 6:30”
+   - “Tomorrow afternoon · 2:30–6:30”
+   - “Next Thursday · August 6”
+
+3. **Resolve the reservation contradiction.**  
+   The page says “we’ll hold it for you,” but later warns that pickup is not guaranteed if items sell out. That undermines the main value proposition. Establish a precise policy, for example:
+
+   > Confirmed reservations are held until 5:45pm. After that, availability may change.
+
+   Repeat the market date, location, hold-until time, and payment expectation inside the reservation form.
+
+4. **Shorten the market page.**  
+   Showing every product from every vendor creates a very long mobile journey and eventually feels more like a catalog. On the main page, show each vendor’s story plus two or three featured products, followed by “See everything Riverdale is bringing.” Keep the full assortment on vendor pages.
+
+5. **Use the desktop canvas more confidently.**  
+   Desktop product content remains in a roughly mobile-width column with large empty gutters. At wider breakpoints, consider:
+
+   - A two-column vendor introduction
+   - Two-column product layouts
+   - Alternating editorial compositions
+   - A sticky “This week” vendor index
+
+   The current narrow composition works much better on mobile than desktop.
+
+## Mobile findings
+
+The mobile hero is strong: the headline, date, CTA, and vendor links fit together cleanly, while the imagery makes the market feel tangible.
+
+The main improvements:
+
+- Reserve buttons appear approximately 30px high; target at least 44px for comfortable tapping.
+- Several body and fine-print styles are small and low-contrast, especially the pilot disclaimer.
+- The reservation sheet has only a drag handle. Add an explicit close button—Escape works on desktop, but phone users need a visible exit.
+- The confirmation button sits at the bottom of an internally scrolling sheet. A sticky action area with safe-area padding would be more dependable.
+- Repeated accessible labels such as “Reserve for pickup” need the product name: “Reserve Broccoli from Riverdale Farm.”
+
+## What is already working
+
+- The navy, gold, serif typography, and real photography create a recognizable identity.
+- The hero clearly prioritizes vendor discovery.
+- Vendor stories are concrete and local.
+- “Reserve for pickup” and “No payment now” are easy to understand.
+- The empty vendor state is charming without becoming silly.
+- The reservation sheet dismisses with Escape and correctly returns keyboard focus.
+- The vendor jump links are useful on a page this long.
+
+## Make it more exciting
+
+“This week at the market” currently functions mainly as a vendor directory. Turn it into the editorial heartbeat of the page:
+
+- “Peaches are at their peak”
+- “New this week: Del Sur’s New Mexico Chicken”
+- “Ask Wilmington Honey Bee about spring versus fall honey”
+- “Three things worth arriving early for”
+
+That will answer “Why should I go this week?” rather than merely “Who is listed?”
+
+## How to validate with limited traffic
+
+Don’t A/B test yet. Run five short tests with local shoppers on their own phones:
+
+1. Where and when is the market?
+2. Find something you would want and reserve it.
+3. Explain what happens after reserving.
+4. Find one reason to visit a particular booth.
+
+Track just five events: vendor-list CTA, vendor selection, reservation opened, reservation completed, and directions clicked. Those will expose the biggest drop-offs without building a heavy analytics system.
+
+Overall: preserve the current visual personality. The best next step is not a redesign—it’s tightening location, urgency, reservation trust, tap ergonomics, and desktop composition.
