@@ -216,7 +216,49 @@ function VendorSection({
   );
 }
 
+const MARKET_OPEN_HOUR = 14.5;  // 2:30pm
+const MARKET_CLOSE_HOUR = 18.5; // 6:30pm
+const DIRECTIONS_URL = "https://maps.google.com/?q=340+Main+St,+Stoneham,+MA+02180";
+
+function getMarketStatus(nextMarketDate: string): string {
+  if (!nextMarketDate) return "";
+
+  // Parse "July 30" style strings into a Date (current year assumed)
+  const parsed = new Date(`${nextMarketDate} ${new Date().getFullYear()}`);
+  if (isNaN(parsed.getTime())) return `Next market: ${nextMarketDate} · 2:30–6:30pm`;
+
+  const now = new Date();
+  const nowHour = now.getHours() + now.getMinutes() / 60;
+
+  // Check if today is market day
+  const isMarketDay =
+    parsed.getFullYear() === now.getFullYear() &&
+    parsed.getMonth() === now.getMonth() &&
+    parsed.getDate() === now.getDate();
+
+  if (isMarketDay && nowHour >= MARKET_OPEN_HOUR && nowHour < MARKET_CLOSE_HOUR) {
+    return "Happening now · Open until 6:30";
+  }
+
+  // Check if market is tomorrow
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const isTomorrow =
+    parsed.getFullYear() === tomorrow.getFullYear() &&
+    parsed.getMonth() === tomorrow.getMonth() &&
+    parsed.getDate() === tomorrow.getDate();
+
+  if (isTomorrow) {
+    return "Tomorrow · 2:30–6:30pm";
+  }
+
+  return `Next market: ${nextMarketDate} · 2:30–6:30pm`;
+}
+
 function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
+  const marketStatus = getMarketStatus(nextMarketDate);
+  const isHappeningNow = marketStatus.startsWith("Happening now");
+
   return (
     <section
       data-testid="hero-section"
@@ -255,11 +297,22 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
         <p className="text-sm text-muted-foreground leading-relaxed mb-2">
           Real food. Real neighbors. Every Thursday afternoon.
         </p>
-        {nextMarketDate && (
-          <p className="text-sm font-sans font-medium text-foreground mt-1">
-            Next market: {nextMarketDate} · 2:30–6:30pm
+        {marketStatus && (
+          <p className={`text-sm font-sans font-medium mt-1 ${isHappeningNow ? "text-primary" : "text-foreground"}`}>
+            {marketStatus}
           </p>
         )}
+        <p className="text-xs text-muted-foreground mt-2">
+          Stoneham Town Common · 340 Main St &nbsp;·&nbsp;{" "}
+          <a
+            href={DIRECTIONS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-foreground transition-colors"
+          >
+            Get directions
+          </a>
+        </p>
         <a
           href="#vendors"
           data-testid="hero-cta"
