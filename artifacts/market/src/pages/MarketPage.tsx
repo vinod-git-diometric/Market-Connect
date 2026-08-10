@@ -196,17 +196,27 @@ function VendorSection({
               This vendor is still stocking their digital table. Check back soon.
             </p>
           ) : liveProducts.length > 0 ? (
-            <div className="flex flex-col gap-3" data-testid={`vendor-products-${vendor.id}`}>
-              {liveProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  launchMode={vendor.launchMode}
-                  vendorName={vendor.name}
-                  onReserve={(p) => onReserve(p, vendor)}
-                />
-              ))}
-            </div>
+            <>
+              <div className="flex flex-col gap-3" data-testid={`vendor-products-${vendor.id}`}>
+                {liveProducts.slice(0, 3).map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    launchMode={vendor.launchMode}
+                    vendorName={vendor.name}
+                    onReserve={(p) => onReserve(p, vendor)}
+                  />
+                ))}
+              </div>
+              {liveProducts.length > 3 && (
+                <Link
+                  href={`/vendors/${vendor.id}`}
+                  className="mt-4 inline-block text-xs font-sans font-medium text-primary hover:underline underline-offset-2"
+                >
+                  See everything {vendor.name} is bringing →
+                </Link>
+              )}
+            </>
           ) : null}
 
           {vendor.pickupInstructions && vendor.launchMode === "reserve_for_pickup" && (
