@@ -136,94 +136,106 @@ function VendorSection({
         data-testid={`vendor-section-${vendor.id}`}
         className={`border-t border-border py-10 md:py-14 ${isEven ? "" : "bg-muted/40"}`}
       >
-        <div className="max-w-2xl mx-auto px-5">
-          {image && (
-            <div className="w-full aspect-[16/7] overflow-hidden rounded-[4px] mb-6">
-              <img
-                src={image}
-                alt={vendor.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          )}
-          <div className="flex flex-col gap-1 mb-2">
-            {vendor.location && (
-              <p className="text-[11px] font-sans uppercase tracking-widest text-muted-foreground">
-                {vendor.location}
-              </p>
-            )}
-            <h2 className="font-serif text-2xl md:text-3xl italic text-foreground leading-tight">
-              {vendor.name}
-            </h2>
-          </div>
+        <div className="px-5 lg:px-8">
+          {/* At lg+: image and content side by side, alternating direction */}
+          <div className={`lg:flex lg:gap-10 xl:gap-14 lg:items-start ${image && !isEven ? "lg:flex-row-reverse" : ""}`}>
 
-          <div className="flex flex-wrap items-center gap-4 mb-5">
-            <Link
-              href={`/vendors/${vendor.id}`}
-              data-testid={`vendor-page-link-${vendor.id}`}
-              className="text-[11px] font-sans font-medium uppercase tracking-widest text-foreground border border-border rounded-[4px] px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
-            >
-              View full page
-            </Link>
-            {vendor.website && (
-              <a
-                href={vendor.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[11px] font-sans uppercase tracking-widest text-primary hover:underline"
-              >
-                Website
-              </a>
-            )}
-            {vendor.instagram && (
-              <a
-                href={`https://instagram.com/${vendor.instagram.replace("@", "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[11px] font-sans uppercase tracking-widest text-primary hover:underline"
-              >
-                Instagram
-              </a>
-            )}
-          </div>
-
-          {vendor.description && (
-            <p className="text-sm text-muted-foreground leading-relaxed mb-5">{vendor.description}</p>
-          )}
-
-          {isProfileOnly ? (
-            <p className="text-sm text-muted-foreground/60 italic border-l-2 border-border pl-3">
-              This vendor is still stocking their digital table. Check back soon.
-            </p>
-          ) : liveProducts.length > 0 ? (
-            <>
-              <div className="flex flex-col gap-3" data-testid={`vendor-products-${vendor.id}`}>
-                {liveProducts.slice(0, 3).map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    launchMode={vendor.launchMode}
-                    vendorName={vendor.name}
-                    onReserve={(p) => onReserve(p, vendor)}
+            {/* Image column */}
+            {image && (
+              <div className="w-full lg:w-[38%] xl:w-[36%] flex-shrink-0 mb-6 lg:mb-0">
+                <div className="w-full aspect-[16/7] lg:aspect-[4/3] overflow-hidden rounded-[4px]">
+                  <img
+                    src={image}
+                    alt={vendor.name}
+                    className="w-full h-full object-cover"
                   />
-                ))}
+                </div>
               </div>
-              {liveProducts.length > 3 && (
+            )}
+
+            {/* Content column */}
+            <div className={image ? "lg:flex-1 min-w-0" : "max-w-2xl lg:max-w-none"}>
+              <div className="flex flex-col gap-1 mb-2">
+                {vendor.location && (
+                  <p className="text-[11px] font-sans uppercase tracking-widest text-muted-foreground">
+                    {vendor.location}
+                  </p>
+                )}
+                <h2 className="font-serif text-2xl md:text-3xl italic text-foreground leading-tight">
+                  {vendor.name}
+                </h2>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 mb-5">
                 <Link
                   href={`/vendors/${vendor.id}`}
-                  className="mt-4 inline-block text-xs font-sans font-medium text-primary hover:underline underline-offset-2"
+                  data-testid={`vendor-page-link-${vendor.id}`}
+                  className="text-[11px] font-sans font-medium uppercase tracking-widest text-foreground border border-border rounded-[4px] px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
                 >
-                  See everything {vendor.name} is bringing →
+                  View full page
                 </Link>
-              )}
-            </>
-          ) : null}
+                {vendor.website && (
+                  <a
+                    href={vendor.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] font-sans uppercase tracking-widest text-primary hover:underline"
+                  >
+                    Website
+                  </a>
+                )}
+                {vendor.instagram && (
+                  <a
+                    href={`https://instagram.com/${vendor.instagram.replace("@", "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] font-sans uppercase tracking-widest text-primary hover:underline"
+                  >
+                    Instagram
+                  </a>
+                )}
+              </div>
 
-          {vendor.pickupInstructions && vendor.launchMode === "reserve_for_pickup" && (
-            <p className="mt-4 text-[11px] text-muted-foreground/70 italic">
-              Pickup: {vendor.pickupInstructions}
-            </p>
-          )}
+              {vendor.description && (
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">{vendor.description}</p>
+              )}
+
+              {isProfileOnly ? (
+                <p className="text-sm text-muted-foreground/60 italic border-l-2 border-border pl-3">
+                  This vendor is still stocking their digital table. Check back soon.
+                </p>
+              ) : liveProducts.length > 0 ? (
+                <>
+                  {/* 2-column product grid at md+ */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3" data-testid={`vendor-products-${vendor.id}`}>
+                    {liveProducts.slice(0, 3).map((product) => (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        launchMode={vendor.launchMode}
+                        vendorName={vendor.name}
+                        onReserve={(p) => onReserve(p, vendor)}
+                      />
+                    ))}
+                  </div>
+                  {liveProducts.length > 3 && (
+                    <Link
+                      href={`/vendors/${vendor.id}`}
+                      className="mt-4 inline-block text-xs font-sans font-medium text-primary hover:underline underline-offset-2"
+                    >
+                      See everything {vendor.name} is bringing →
+                    </Link>
+                  )}
+                </>
+              ) : null}
+
+              {vendor.pickupInstructions && vendor.launchMode === "reserve_for_pickup" && (
+                <p className="mt-4 text-[11px] text-muted-foreground/70 italic">
+                  Pickup: {vendor.pickupInstructions}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
       </section>
     </FadeInSection>
@@ -464,16 +476,37 @@ export default function MarketPage() {
       <HeroSection nextMarketDate={data.nextMarketDate} />
       <WeekHighlightsSection vendors={data.vendors} />
 
-      <div id="vendors">
-        {data.vendors.map((vendor, index) => (
-          <div key={vendor.id} id={`vendor-${vendor.id}`}>
-            <VendorSection
-              vendor={vendor}
-              index={index}
-              onReserve={handleReserve}
-            />
-          </div>
-        ))}
+      <div className="lg:flex lg:items-start">
+        {/* Sticky vendor index sidebar — visible at lg+ only */}
+        <aside className="hidden lg:block lg:w-44 xl:w-52 flex-shrink-0 sticky top-0 self-start max-h-screen overflow-y-auto py-10 px-6 border-r border-border">
+          <p className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground mb-3">
+            This week
+          </p>
+          <nav className="flex flex-col gap-0.5">
+            {data.vendors.map((v) => (
+              <a
+                key={v.id}
+                href={`#vendor-${v.id}`}
+                className="text-xs font-sans text-muted-foreground hover:text-foreground py-1.5 transition-colors leading-snug"
+              >
+                {v.name}
+              </a>
+            ))}
+          </nav>
+        </aside>
+
+        {/* Vendor sections */}
+        <div id="vendors" className="flex-1 min-w-0">
+          {data.vendors.map((vendor, index) => (
+            <div key={vendor.id} id={`vendor-${vendor.id}`}>
+              <VendorSection
+                vendor={vendor}
+                index={index}
+                onReserve={handleReserve}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {data.vendors.length === 0 && (
