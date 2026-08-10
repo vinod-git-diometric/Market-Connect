@@ -67,10 +67,12 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 function ProductCard({
   product,
   launchMode,
+  vendorName,
   onReserve,
 }: {
   product: Product;
   launchMode: string;
+  vendorName: string;
   onReserve: (product: Product) => void;
 }) {
   const showReserve = launchMode === "reserve_for_pickup" && product.reservationAllowed;
@@ -98,7 +100,8 @@ function ProductCard({
           <button
             onClick={() => onReserve(product)}
             data-testid={`reserve-btn-${product.id}`}
-            className="mt-1 text-xs font-sans font-medium border border-primary text-primary rounded-[4px] px-3 py-1.5 hover:bg-primary hover:text-primary-foreground transition-colors self-start"
+            aria-label={`Reserve ${product.name} from ${vendorName}`}
+            className="mt-1 text-xs font-sans font-medium border border-primary text-primary rounded-[4px] px-3 min-h-[44px] hover:bg-primary hover:text-primary-foreground transition-colors self-start"
           >
             Reserve for pickup
           </button>
@@ -199,6 +202,7 @@ function VendorSection({
                   key={product.id}
                   product={product}
                   launchMode={vendor.launchMode}
+                  vendorName={vendor.name}
                   onReserve={(p) => onReserve(p, vendor)}
                 />
               ))}
@@ -373,7 +377,7 @@ function TrustSection() {
               {
                 step: "01",
                 title: "Reserve online",
-                body: "Tell us what you want and we'll hold it for you. No payment needed now.",
+                body: "Tell us what you want. Your spot is held until 5:45pm — no payment needed now.",
               },
               {
                 step: "02",
@@ -394,7 +398,7 @@ function TrustSection() {
             ))}
           </div>
           <p className="text-[11px] text-muted-foreground/60 mt-8 italic">
-            This is a pilot program by United Main. Reservations are confirmed by email. Pickup is not guaranteed if you arrive after market items sell out.
+            This is a pilot program by United Main. Reservations are confirmed by email and held until 5:45pm. Unclaimed reservations may be released after that time.
           </p>
         </div>
       </section>
@@ -495,6 +499,7 @@ export default function MarketPage() {
         onOpenChange={setDrawerOpen}
         product={selectedProduct}
         vendor={selectedVendor}
+        marketDate={data?.nextMarketDate}
       />
     </div>
   );

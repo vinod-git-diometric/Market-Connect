@@ -21,9 +21,10 @@ interface Props {
   onOpenChange: (open: boolean) => void;
   product: Product | null;
   vendor: Vendor | null;
+  marketDate?: string;
 }
 
-export default function ReservationDrawer({ open, onOpenChange, product, vendor }: Props) {
+export default function ReservationDrawer({ open, onOpenChange, product, vendor, marketDate }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [reservationCode, setReservationCode] = useState("");
 
@@ -82,23 +83,40 @@ export default function ReservationDrawer({ open, onOpenChange, product, vendor 
           data-testid="reservation-drawer"
           className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border rounded-t-[8px] flex flex-col max-h-[90vh] outline-none"
         >
-          <div className="mx-auto w-10 h-1 bg-border rounded-full mt-3 mb-1 flex-shrink-0" />
+          {/* Header: drag handle + close button */}
+          <div className="flex items-center px-5 pt-3 pb-2 flex-shrink-0 relative">
+            <div className="absolute left-1/2 -translate-x-1/2 top-3 w-10 h-1 bg-border rounded-full" />
+            <button
+              onClick={handleClose}
+              aria-label="Close reservation form"
+              className="ml-auto mt-1 w-8 h-8 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors text-lg leading-none"
+            >
+              ×
+            </button>
+          </div>
 
-          <div className="overflow-y-auto flex-1 px-5 pb-8 pt-3">
+          {/* Scrollable content */}
+          <div className="overflow-y-auto flex-1 px-5 pt-2 pb-4">
             <Drawer.Title className="font-serif text-xl italic text-foreground mb-1">
               Reserve for pickup
             </Drawer.Title>
-            <p className="text-xs text-muted-foreground mb-5">
+            <p className="text-xs text-muted-foreground mb-1">
               <span className="font-medium text-foreground">{product.name}</span> from {vendor?.name}
               {product.price && <> &mdash; {product.price}</>}
             </p>
+            {(marketDate || true) && (
+              <p className="text-[11px] text-muted-foreground/80 mb-5">
+                {marketDate ? `${marketDate} · ` : ""}Stoneham Town Common · Held until 5:45pm · Pay at the booth
+              </p>
+            )}
 
             {submitted ? (
               <div data-testid="reservation-success" className="text-center py-6">
                 <p className="font-serif text-2xl italic text-foreground mb-2">Reserved.</p>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  We sent a confirmation to your email. Please show your reservation code at the{" "}
-                  <span className="font-medium text-foreground">{vendor?.name}</span> booth during market hours. Payment happens directly with the vendor.
+                  We sent a confirmation to your email. Show your reservation code at the{" "}
+                  <span className="font-medium text-foreground">{vendor?.name}</span> booth during market hours.
+                  Your spot is held until 5:45pm — payment happens directly with the vendor.
                 </p>
                 {reservationCode && (
                   <div className="inline-block border border-primary rounded-[4px] px-5 py-3 mb-6">
@@ -118,6 +136,7 @@ export default function ReservationDrawer({ open, onOpenChange, product, vendor 
               </div>
             ) : (
               <form
+                id="reservation-form"
                 onSubmit={handleSubmit(onSubmit)}
                 data-testid="reservation-form"
                 className="flex flex-col gap-4"
@@ -198,28 +217,34 @@ export default function ReservationDrawer({ open, onOpenChange, product, vendor 
                     className="w-full border border-border rounded-[4px] px-3 py-2 text-sm bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring resize-none"
                   />
                 </div>
-
-                {mutation.isError && (
-                  <p className="text-xs text-destructive">
-                    Something went wrong. Please try again.
-                  </p>
-                )}
-
-                <button
-                  type="submit"
-                  data-testid="submit-reservation"
-                  disabled={mutation.isPending}
-                  className="w-full bg-primary text-primary-foreground font-sans text-sm font-medium py-3 rounded-[4px] hover:opacity-90 transition-opacity disabled:opacity-60"
-                >
-                  {mutation.isPending ? "Sending..." : "Confirm reservation"}
-                </button>
-
-                <p className="text-[10px] text-muted-foreground/70 text-center">
-                  No payment now. You'll pay directly at the vendor booth.
-                </p>
               </form>
             )}
           </div>
+
+          {/* Sticky footer — only shown on form state */}
+          {!submitted && (
+            <div
+              className="flex-shrink-0 px-5 pt-3 pb-[max(1.25rem,env(safe-area-inset-bottom))] border-t border-border bg-background"
+            >
+              {mutation.isError && (
+                <p className="text-xs text-destructive mb-2">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+              <button
+                type="submit"
+                form="reservation-form"
+                data-testid="submit-reservation"
+                disabled={mutation.isPending}
+                className="w-full bg-primary text-primary-foreground font-sans text-sm font-medium py-3 rounded-[4px] hover:opacity-90 transition-opacity disabled:opacity-60"
+              >
+                {mutation.isPending ? "Sending..." : "Confirm reservation"}
+              </button>
+              <p className="text-[10px] text-muted-foreground/70 text-center mt-2">
+                No payment now · Held until 5:45pm · Pay at the booth
+              </p>
+            </div>
+          )}
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>
