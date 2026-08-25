@@ -316,6 +316,9 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
         <p className="text-[11px] font-sans uppercase tracking-widest text-primary mb-3">
           Stoneham, MA
         </p>
+        <p className="text-[10px] font-sans font-semibold uppercase tracking-[0.24em] text-primary/90 mb-4">
+          FARMERS MARKET TO-GO!
+        </p>
         <h1 className="font-serif text-3xl md:text-5xl italic leading-tight text-foreground mb-2 md:mb-3">
           The Stoneham<br />Farmers Market
         </h1>
