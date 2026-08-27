@@ -178,7 +178,7 @@ export function PosterInspired() {
         </div>
         <div className="sfm-hero-photo">
           <img src="/__mockup/images/market-hero.jpg" alt="Fresh carrots and greens at the Stoneham farmers market" />
-          <div className="sfm-photo-label">Fresh from nearby<em>Bring your appetite.</em></div>
+          <div className="sfm-photo-label">Fresh from nearby<em>Farmers to-go</em></div>
         </div>
       </section>
 

@@ -362,7 +362,7 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
               Fresh from nearby
             </p>
             <p className="font-script text-2xl leading-tight text-accent">
-              Bring your appetite.
+              Farmers to-go
             </p>
           </div>
         </div>
