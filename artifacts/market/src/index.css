@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -59,6 +59,8 @@
 
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
+  --font-display: var(--app-font-display);
+  --font-script: var(--app-font-script);
   --font-mono: var(--app-font-mono);
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -76,55 +78,56 @@
   --elevate-1: rgba(255,255,255, .03);
   --elevate-2: rgba(255,255,255, .06);
 
-  /* Stoneham CAN teal — pixel-sampled #29586F = hsl(200, 46%, 30%) */
-  --background: 200 46% 18%;
-  --foreground: 200 15% 95%;
+  /* Farmers Market palette — warm paper, garden green, tomato red */
+  --background: 42 48% 94%;
+  --foreground: 145 22% 13%;
 
-  --border: 200 40% 28%;
-  --card: 200 46% 23%;
-  --card-foreground: 200 15% 95%;
-  --card-border: 200 40% 28%;
+  --border: 38 24% 73%;
+  --card: 42 60% 98%;
+  --card-foreground: 145 22% 13%;
+  --card-border: 38 24% 73%;
 
-  --popover: 200 46% 23%;
-  --popover-foreground: 200 15% 95%;
-  --popover-border: 200 40% 28%;
+  --popover: 42 60% 98%;
+  --popover-foreground: 145 22% 13%;
+  --popover-border: 38 24% 73%;
 
-  /* Stoneham CAN gold — pixel-sampled #E9B122 = hsl(43, 82%, 52%) */
-  --primary: 43 82% 52%;
-  --primary-foreground: 200 46% 14%;
+  --primary: 145 43% 29%;
+  --primary-foreground: 42 60% 98%;
 
-  --secondary: 200 46% 29%;
-  --secondary-foreground: 200 15% 95%;
+  --secondary: 145 28% 87%;
+  --secondary-foreground: 145 22% 13%;
 
-  --muted: 200 44% 21%;
-  --muted-foreground: 200 20% 65%;
+  --muted: 40 35% 89%;
+  --muted-foreground: 145 10% 37%;
 
-  --accent: 43 82% 52%;
-  --accent-foreground: 200 46% 14%;
+  --accent: 0 67% 52%;
+  --accent-foreground: 42 60% 98%;
 
-  --destructive: 0 72% 51%;
-  --destructive-foreground: 200 15% 95%;
+  --destructive: 0 67% 52%;
+  --destructive-foreground: 42 60% 98%;
 
-  --input: 200 40% 28%;
-  --ring: 43 82% 52%;
+  --input: 38 24% 73%;
+  --ring: 145 43% 29%;
 
-  --chart-1: 43 82% 52%;
-  --chart-2: 200 46% 45%;
-  --chart-3: 200 46% 30%;
-  --chart-4: 43 74% 66%;
-  --chart-5: 170 45% 42%;
+  --chart-1: 145 43% 29%;
+  --chart-2: 0 67% 52%;
+  --chart-3: 38 56% 51%;
+  --chart-4: 145 28% 49%;
+  --chart-5: 18 61% 50%;
 
-  --sidebar: 200 46% 16%;
-  --sidebar-foreground: 200 15% 95%;
-  --sidebar-border: 200 40% 28%;
-  --sidebar-primary: 43 82% 52%;
-  --sidebar-primary-foreground: 200 46% 14%;
-  --sidebar-accent: 200 46% 29%;
-  --sidebar-accent-foreground: 200 15% 95%;
-  --sidebar-ring: 43 82% 52%;
+  --sidebar: 145 43% 22%;
+  --sidebar-foreground: 42 60% 98%;
+  --sidebar-border: 145 28% 35%;
+  --sidebar-primary: 0 67% 52%;
+  --sidebar-primary-foreground: 42 60% 98%;
+  --sidebar-accent: 145 28% 29%;
+  --sidebar-accent-foreground: 42 60% 98%;
+  --sidebar-ring: 0 67% 52%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Cormorant Garamond', serif;
+  --app-font-display: 'Barlow Condensed', sans-serif;
+  --app-font-script: 'Caveat', cursive;
   --app-font-mono: Menlo, monospace;
   --radius: 4px;
 
@@ -147,35 +150,35 @@
 }
 
 .dark {
-  --background: 200 46% 18%;
-  --foreground: 200 15% 95%;
+  --background: 42 48% 94%;
+  --foreground: 145 22% 13%;
 
-  --border: 200 40% 28%;
-  --card: 200 46% 23%;
-  --card-foreground: 200 15% 95%;
-  --card-border: 200 40% 28%;
+  --border: 38 24% 73%;
+  --card: 42 60% 98%;
+  --card-foreground: 145 22% 13%;
+  --card-border: 38 24% 73%;
 
-  --popover: 200 46% 23%;
-  --popover-foreground: 200 15% 95%;
-  --popover-border: 200 40% 28%;
+  --popover: 42 60% 98%;
+  --popover-foreground: 145 22% 13%;
+  --popover-border: 38 24% 73%;
 
-  --primary: 43 82% 52%;
-  --primary-foreground: 200 46% 14%;
+  --primary: 145 43% 29%;
+  --primary-foreground: 42 60% 98%;
 
-  --secondary: 200 46% 29%;
-  --secondary-foreground: 200 15% 95%;
+  --secondary: 145 28% 87%;
+  --secondary-foreground: 145 22% 13%;
 
-  --muted: 200 44% 21%;
-  --muted-foreground: 200 20% 65%;
+  --muted: 40 35% 89%;
+  --muted-foreground: 145 10% 37%;
 
-  --accent: 43 82% 52%;
-  --accent-foreground: 200 46% 14%;
+  --accent: 0 67% 52%;
+  --accent-foreground: 42 60% 98%;
 
-  --destructive: 0 72% 51%;
-  --destructive-foreground: 200 15% 95%;
+  --destructive: 0 67% 52%;
+  --destructive-foreground: 42 60% 98%;
 
-  --input: 200 40% 28%;
-  --ring: 43 82% 52%;
+  --input: 38 24% 73%;
+  --ring: 145 43% 29%;
 }
 
 @layer base {
@@ -190,10 +193,10 @@
     min-height: 100%;
     overflow-y: auto;
     @apply font-sans antialiased bg-background text-foreground;
-    /* Subtle grid texture — matches unitedmain.com aesthetic */
+    /* Warm paper texture echoes the poster while preserving the parent grid language */
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      linear-gradient(rgba(55, 74, 61, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(55, 74, 61, 0.045) 1px, transparent 1px);
     background-size: 52px 52px;
   }
   h1, h2, h3, h4, h5, h6 {

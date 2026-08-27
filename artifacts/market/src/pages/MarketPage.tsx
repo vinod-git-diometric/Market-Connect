@@ -80,14 +80,14 @@ function ProductCard({
 
   return (
     <div
-      className="border border-border rounded-[4px] bg-card overflow-hidden flex flex-row"
+      className="border border-border rounded-[4px] bg-card overflow-hidden flex flex-row transition-all hover:border-primary hover:shadow-[4px_4px_0_hsl(var(--accent))]"
       data-testid={`product-card-${product.id}`}
     >
       <div className="p-4 flex flex-col gap-2 flex-1 min-w-0">
         <div className="flex-1 min-w-0">
-          <p className="font-sans font-medium text-sm text-foreground leading-snug">{product.name}</p>
+          <p className="font-serif font-semibold text-base text-foreground leading-snug">{product.name}</p>
           {product.price && (
-            <p className="text-xs text-primary font-medium mt-0.5">{product.price}</p>
+            <p className="text-xs text-accent font-semibold mt-0.5">{product.price}</p>
           )}
         </div>
         {product.description && (
@@ -101,7 +101,7 @@ function ProductCard({
             onClick={() => onReserve(product)}
             data-testid={`reserve-btn-${product.id}`}
             aria-label={`Reserve ${product.name} from ${vendorName}`}
-            className="mt-1 text-xs font-sans font-medium border border-primary text-primary rounded-[4px] px-3 min-h-[44px] hover:bg-primary hover:text-primary-foreground transition-colors self-start"
+            className="mt-1 text-xs font-sans font-semibold border border-primary text-primary rounded-[4px] px-3 min-h-[44px] hover:bg-primary hover:text-primary-foreground transition-colors self-start uppercase tracking-wide"
           >
             Reserve for pickup
           </button>
@@ -134,9 +134,9 @@ function VendorSection({
     <FadeInSection delay={0.05}>
       <section
         data-testid={`vendor-section-${vendor.id}`}
-        className={`border-t border-border py-10 md:py-14 ${isEven ? "" : "bg-muted/40"}`}
+        className={`border-t border-border py-10 md:py-14 ${isEven ? "bg-background" : "bg-muted/40"}`}
       >
-        <div className="px-5 lg:px-8">
+        <div className="max-w-7xl mx-auto px-5 lg:px-8">
           {/* At lg+: image and content side by side, alternating direction */}
           <div className={`lg:flex lg:gap-10 xl:gap-14 lg:items-start ${image && !isEven ? "lg:flex-row-reverse" : ""}`}>
 
@@ -157,11 +157,11 @@ function VendorSection({
             <div className={image ? "lg:flex-1 min-w-0" : "max-w-2xl lg:max-w-none"}>
               <div className="flex flex-col gap-1 mb-2">
                 {vendor.location && (
-                  <p className="text-[11px] font-sans uppercase tracking-widest text-muted-foreground">
+                  <p className="text-[11px] font-sans uppercase tracking-widest text-primary">
                     {vendor.location}
                   </p>
                 )}
-                <h2 className="font-serif text-2xl md:text-3xl italic text-foreground leading-tight">
+                <h2 className="font-display font-bold uppercase text-3xl md:text-4xl tracking-tight text-accent leading-[0.9]">
                   {vendor.name}
                 </h2>
               </div>
@@ -170,7 +170,7 @@ function VendorSection({
                 <Link
                   href={`/vendors/${vendor.id}`}
                   data-testid={`vendor-page-link-${vendor.id}`}
-                  className="text-[11px] font-sans font-medium uppercase tracking-widest text-foreground border border-border rounded-[4px] px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
+                  className="text-[11px] font-sans font-semibold uppercase tracking-widest text-primary border border-primary rounded-[4px] px-3 py-1.5 hover:bg-primary hover:text-primary-foreground transition-colors"
                 >
                   View full page
                 </Link>
@@ -179,7 +179,7 @@ function VendorSection({
                     href={vendor.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] font-sans uppercase tracking-widest text-primary hover:underline"
+                    className="text-[11px] font-sans uppercase tracking-widest text-accent hover:underline"
                   >
                     Website
                   </a>
@@ -189,7 +189,7 @@ function VendorSection({
                     href={`https://instagram.com/${vendor.instagram.replace("@", "")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] font-sans uppercase tracking-widest text-primary hover:underline"
+                    className="text-[11px] font-sans uppercase tracking-widest text-accent hover:underline"
                   >
                     Instagram
                   </a>
@@ -197,11 +197,11 @@ function VendorSection({
               </div>
 
               {vendor.description && (
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5">{vendor.description}</p>
+                <p className="font-serif text-base text-muted-foreground leading-relaxed mb-5 max-w-2xl">{vendor.description}</p>
               )}
 
               {isProfileOnly ? (
-                <p className="text-sm text-muted-foreground/60 italic border-l-2 border-border pl-3">
+                <p className="font-serif text-base text-muted-foreground/80 italic border-l-2 border-primary pl-3">
                   This vendor is still stocking their digital table. Check back soon.
                 </p>
               ) : liveProducts.length > 0 ? (
@@ -219,9 +219,9 @@ function VendorSection({
                     ))}
                   </div>
                   {liveProducts.length > 3 && (
-                    <Link
+                  <Link
                       href={`/vendors/${vendor.id}`}
-                      className="mt-4 inline-block text-xs font-sans font-medium text-primary hover:underline underline-offset-2"
+                      className="mt-4 inline-block text-xs font-sans font-semibold uppercase tracking-wide text-accent hover:underline underline-offset-2"
                     >
                       See everything {vendor.name} is bringing →
                     </Link>
@@ -288,68 +288,85 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-[42vh] md:min-h-[60vh] flex flex-col items-center justify-center px-5 pt-10 pb-7 md:pt-16 md:pb-12 text-center overflow-hidden"
+      className="border-b border-border bg-background overflow-hidden"
     >
-      {/* Hero background image */}
-      <img
-        src={heroImg}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center"
-      />
-      {/* Teal overlay — matches brand color, ensures text contrast */}
-      <div
-        className="absolute inset-0"
-        style={{ background: "hsl(200 46% 16% / 0.82)" }}
-      />
-      {/* Gold radial glow at top */}
-      <div
-        className="absolute inset-0"
-        style={{ background: "radial-gradient(ellipse 80% 50% at 50% 0%, hsl(43 60% 30% / 0.30), transparent)" }}
-      />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 max-w-lg w-full"
-      >
-        <p className="text-[11px] font-sans uppercase tracking-widest text-primary mb-3">
-          Stoneham, MA
-        </p>
-        <p className="text-[10px] font-sans font-semibold uppercase tracking-[0.24em] text-primary/90 mb-4">
-          FARMERS MARKET TO-GO!
-        </p>
-        <h1 className="font-serif text-3xl md:text-5xl italic leading-tight text-foreground mb-2 md:mb-3">
-          The Stoneham<br />Farmers Market
-        </h1>
-        <div className="w-16 h-px bg-primary mx-auto my-3 md:my-4" />
-        <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-          Real food. Real neighbors. Every Thursday afternoon.
-        </p>
-        {marketStatus && (
-          <p className={`text-sm font-sans font-medium mt-1 ${isHappeningNow ? "text-primary" : "text-foreground"}`}>
-            {marketStatus}
-          </p>
-        )}
-        <p className="text-xs text-muted-foreground mt-2">
-          Stoneham Town Common · 340 Main St &nbsp;·&nbsp;{" "}
-          <a
-            href={DIRECTIONS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-foreground transition-colors"
-          >
-            Get directions
-          </a>
-        </p>
-        <a
-          href="#vendors"
-          data-testid="hero-cta"
-          className="inline-block mt-5 md:mt-8 px-6 py-2.5 bg-primary text-primary-foreground font-sans text-sm font-medium rounded-[4px] hover:opacity-90 transition-opacity tracking-wide"
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 min-h-[560px]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="px-5 sm:px-8 lg:px-12 xl:px-16 py-12 md:py-16 lg:py-20 flex flex-col justify-center"
         >
-          Meet the vendors
-        </a>
-      </motion.div>
+          <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+            Community and connection
+          </p>
+          <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.22em] text-accent mb-5">
+            FARMERS MARKET TO-GO!
+          </p>
+          <h1 className="font-display font-extrabold uppercase text-[clamp(3.35rem,8vw,7rem)] leading-[0.77] tracking-[-0.045em] text-accent">
+            Stoneham
+            <span className="block text-primary">Farmers<br />Market</span>
+          </h1>
+          <div className="w-24 h-1 bg-accent mt-7 mb-5" />
+          <p className="font-serif text-xl md:text-2xl leading-tight text-foreground max-w-md">
+            Real food. Real neighbors. Everything worth bringing home on Thursday.
+          </p>
+          <p className="font-script text-3xl md:text-4xl leading-none text-primary mt-6 -rotate-1">
+            See it. Reserve it. Pick it up.
+          </p>
+          <div className="flex flex-wrap gap-3 mt-7">
+            <a
+              href="#vendors"
+              data-testid="hero-cta"
+              className="inline-flex items-center justify-center px-5 py-3 bg-primary text-primary-foreground font-sans text-xs font-semibold uppercase tracking-widest rounded-[4px] hover:bg-accent transition-colors"
+            >
+              Shop this week
+            </a>
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center justify-center px-5 py-3 border border-primary text-primary font-sans text-xs font-semibold uppercase tracking-widest rounded-[4px] hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              How pickup works
+            </a>
+          </div>
+          <div className="flex items-center gap-4 mt-9">
+            <span className="font-display font-bold text-4xl leading-none text-accent uppercase">Thu</span>
+            <div className="border-l border-border pl-4 text-sm leading-relaxed text-foreground">
+              {marketStatus && (
+                <p className={`font-sans font-semibold ${isHappeningNow ? "text-accent" : "text-foreground"}`}>
+                  {marketStatus}
+                </p>
+              )}
+              <p>
+                Stoneham Town Common · 340 Main St ·{" "}
+                <a
+                  href={DIRECTIONS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-2 hover:text-accent transition-colors"
+                >
+                  Get directions
+                </a>
+              </p>
+            </div>
+          </div>
+        </motion.div>
+        <div className="relative min-h-[340px] lg:min-h-full overflow-hidden order-first lg:order-last">
+          <img
+            src={heroImg}
+            alt="Fresh produce at the Stoneham Farmers Market"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-x-5 bottom-5 sm:inset-x-8 lg:inset-x-10 lg:bottom-10 bg-card border-2 border-primary px-4 py-3 max-w-xs -rotate-1">
+            <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+              Fresh from nearby
+            </p>
+            <p className="font-script text-2xl leading-tight text-accent">
+              Bring your appetite.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -360,9 +377,9 @@ function WeekHighlightsSection({ vendors }: { vendors: Vendor[] }) {
 
   return (
     <FadeInSection>
-      <section className="py-8 px-5 border-t border-border">
-        <div className="max-w-2xl mx-auto">
-          <p className="text-[11px] font-sans uppercase tracking-widest text-muted-foreground mb-3">
+      <section className="py-8 px-5 border-t border-border bg-card/50">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-[11px] font-sans font-semibold uppercase tracking-widest text-primary mb-3">
             This week at the market
           </p>
           <div className="flex flex-wrap gap-2">
@@ -371,7 +388,7 @@ function WeekHighlightsSection({ vendors }: { vendors: Vendor[] }) {
                 key={v.id}
                 href={`/vendors/${v.id}`}
                 data-testid={`vendor-chip-link-${v.id}`}
-                className="cursor-pointer text-xs font-sans border border-primary/40 rounded-[4px] px-3 py-1 text-primary underline-offset-2 hover:underline hover:border-primary transition-colors"
+                className="cursor-pointer text-xs font-sans font-semibold border border-primary rounded-[4px] px-3 py-1 text-primary bg-background underline-offset-2 hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 {v.name}
               </Link>
@@ -388,16 +405,17 @@ function TrustSection() {
     <FadeInSection>
       <section
         data-testid="trust-section"
-        className="border-t border-border py-12 px-5 bg-muted/60"
+        id="how-it-works"
+        className="border-t-4 border-[hsl(43_82%_50%)] py-14 md:py-16 px-5 bg-accent text-accent-foreground"
       >
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-[11px] font-sans uppercase tracking-widest text-muted-foreground mb-4">
-            How it works
+        <div className="max-w-7xl mx-auto">
+          <p className="text-[11px] font-sans font-semibold uppercase tracking-widest text-[hsl(43_82%_72%)] mb-3">
+            No lines. No guesswork.
           </p>
-          <h3 className="font-serif text-xl italic text-foreground mb-4">
-            Reserve. Pick up. Pay the vendor.
+          <h3 className="font-display font-bold uppercase text-4xl md:text-6xl tracking-tight leading-[0.85] mb-8">
+            Reserve your<br />Thursday.
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             {[
               {
                 step: "01",
@@ -415,14 +433,14 @@ function TrustSection() {
                 body: "Payment happens at the booth during market hours — cash, card, Venmo, or however the vendor prefers.",
               },
             ].map((item) => (
-              <div key={item.step} className="flex flex-col gap-2">
-                <p className="font-serif text-3xl text-primary/40 leading-none">{item.step}</p>
-                <p className="font-sans font-medium text-sm text-foreground">{item.title}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{item.body}</p>
+              <div key={item.step} className="flex flex-col gap-2 border-t border-accent-foreground/50 pt-4">
+                <p className="font-display text-5xl font-bold text-[hsl(43_82%_72%)] leading-none">{item.step}</p>
+                <p className="font-serif font-semibold text-xl text-accent-foreground">{item.title}</p>
+                <p className="text-sm text-accent-foreground/85 leading-relaxed max-w-xs">{item.body}</p>
               </div>
             ))}
           </div>
-          <p className="text-[11px] text-muted-foreground/60 mt-8 italic">
+          <p className="text-xs text-accent-foreground/75 mt-10 italic">
             This is a pilot program by United Main. Reservations are confirmed by email and held until 5:45pm. Unclaimed reservations may be released after that time.
           </p>
         </div>
@@ -481,8 +499,8 @@ export default function MarketPage() {
 
       <div className="lg:flex lg:items-start">
         {/* Sticky vendor index sidebar — visible at lg+ only */}
-        <aside className="hidden lg:block lg:w-44 xl:w-52 flex-shrink-0 sticky top-0 self-start max-h-screen overflow-y-auto py-10 px-6 border-r border-border">
-          <p className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground mb-3">
+        <aside className="hidden lg:block lg:w-44 xl:w-52 flex-shrink-0 sticky top-0 self-start max-h-screen overflow-y-auto py-10 px-6 border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
+          <p className="text-[10px] font-sans font-semibold uppercase tracking-widest text-[hsl(43_82%_72%)] mb-3">
             This week
           </p>
           <nav className="flex flex-col gap-0.5">
@@ -490,7 +508,7 @@ export default function MarketPage() {
               <a
                 key={v.id}
                 href={`#vendor-${v.id}`}
-                className="text-xs font-sans text-muted-foreground hover:text-foreground py-1.5 transition-colors leading-snug"
+                className="text-xs font-sans text-sidebar-foreground/75 hover:text-sidebar-foreground py-1.5 transition-colors leading-snug"
               >
                 {v.name}
               </a>
@@ -513,8 +531,8 @@ export default function MarketPage() {
       </div>
 
       {data.vendors.length === 0 && (
-        <section className="py-16 px-5 text-center">
-          <p className="font-serif text-xl italic text-muted-foreground">
+          <section className="py-16 px-5 text-center bg-background">
+            <p className="font-serif text-xl italic text-muted-foreground">
             Vendors are getting ready for market day.
           </p>
           <p className="text-sm text-muted-foreground mt-2">Check back soon.</p>
@@ -523,10 +541,10 @@ export default function MarketPage() {
 
       <TrustSection />
 
-      <footer className="border-t border-border py-8 px-5 text-center flex flex-col items-center gap-3">
+      <footer className="border-t-2 border-[hsl(43_82%_50%)] py-10 px-5 bg-[hsl(30_55%_7%)] text-[hsl(42_60%_96%)] text-center flex flex-col items-center gap-3">
         <Link
           href="/join"
-          className="text-[11px] font-sans text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
+          className="text-[11px] font-sans text-[hsl(42_60%_96%)] hover:text-[hsl(43_82%_60%)] transition-colors uppercase tracking-widest"
         >
           Interested in vending? Apply here →
         </Link>
@@ -534,7 +552,7 @@ export default function MarketPage() {
           href="https://unitedmain.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[11px] font-sans text-muted-foreground/60 uppercase tracking-widest hover:text-primary transition-colors"
+          className="text-[11px] font-sans text-[hsl(40_20%_60%)] uppercase tracking-widest hover:text-[hsl(43_82%_60%)] transition-colors"
         >
           A United Main pilot &mdash; Stoneham, MA
         </a>

@@ -1,0 +1,1 @@
+- [Market brand architecture](market-brand-architecture.md) — United Main provides the shared frame; the market keeps a warmer poster-inspired sub-brand.
