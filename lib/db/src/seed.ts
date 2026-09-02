@@ -21,7 +21,7 @@ async function seed() {
         instagram: "@bellinibakingco",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "July 25 · 2:30–6:30pm",
+        marketDates: "September 3 · 2:30–6:30pm",
         pickupInstructions: "Pick up at the vendor tent by showing your confirmation email.",
       },
       {
@@ -35,7 +35,7 @@ async function seed() {
         instagram: "@delsurempanadas",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "July 25 · 2:30–6:30pm",
+        marketDates: "September 3 · 2:30–6:30pm",
         pickupInstructions: "Pick up at the vendor tent by showing your confirmation email.",
       },
       {
@@ -49,7 +49,7 @@ async function seed() {
         instagram: "@Wilmington_honey_bee",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "July 25 · 2:30–6:30pm",
+        marketDates: "September 3 · 2:30–6:30pm",
         pickupInstructions: "Pick up at the vendor tent by showing your confirmation email.",
       },
       {
@@ -62,7 +62,7 @@ async function seed() {
         instagram: "@cravecreations_ma",
         launchMode: "featured_products",
         status: "live",
-        marketDates: "July 25 · 2:30–6:30pm",
+        marketDates: "September 3 · 2:30–6:30pm",
       },
       {
         name: "Spice Weasel Sauce",
@@ -75,7 +75,7 @@ async function seed() {
         instagram: "@spiceweaselsauce",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "July 25 · 2:30–6:30pm",
+        marketDates: "September 3 · 2:30–6:30pm",
         pickupInstructions: "Pick up at the vendor tent by showing your confirmation email.",
       },
       {
@@ -85,7 +85,7 @@ async function seed() {
         description:
           "Fresh-baked goods, handmade jams, and farm-to-table specialties made in small batches in Boxford, MA. Tarts, braided loaves, Danish, focaccia, and rotating seasonal jams at every market.",
         location: "Boxford, MA",
-        marketDates: "TBD",
+        marketDates: "September 3 · 2:30–6:30pm",
         launchMode: "featured_products",
         status: "live",
       },
@@ -97,7 +97,7 @@ async function seed() {
         location: "Groton, MA",
         launchMode: "reserve_for_pickup",
         status: "live",
-        marketDates: "July 25 · 2:30–6:30pm",
+        marketDates: "September 3 · 2:30–6:30pm",
       },
       {
         name: "Aaronap Cellars",
@@ -109,7 +109,7 @@ async function seed() {
         instagram: "@aaronapcellars",
         launchMode: "profile_only",
         status: "live",
-        marketDates: "July 25 · 2:30–6:30pm",
+        marketDates: "September 3 · 2:30–6:30pm",
       },
     ])
     .returning();

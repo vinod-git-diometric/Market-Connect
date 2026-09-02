@@ -249,7 +249,7 @@ const DIRECTIONS_URL = "https://maps.google.com/?q=340+Main+St,+Stoneham,+MA+021
 function getMarketStatus(nextMarketDate: string): string {
   if (!nextMarketDate) return "";
 
-  // Parse "July 30" style strings into a Date (current year assumed)
+  // Parse "Month Day" style strings into a Date (current year assumed)
   const parsed = new Date(`${nextMarketDate} ${new Date().getFullYear()}`);
   if (isNaN(parsed.getTime())) return `Next market: ${nextMarketDate} · 2:30–6:30pm`;
 
