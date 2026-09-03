@@ -351,7 +351,7 @@ function HeroSection({ nextMarketDate }: { nextMarketDate: string }) {
             </div>
           </div>
         </motion.div>
-        <div className="relative min-h-[340px] lg:min-h-full overflow-hidden order-first lg:order-last">
+        <div className="relative min-h-[340px] lg:min-h-full overflow-hidden order-last">
           <img
             src={heroImg}
             alt="Fresh produce at the Stoneham Farmers Market"
